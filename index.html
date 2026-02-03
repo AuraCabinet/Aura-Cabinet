@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AURA CABINET — Firma de Estrategia &amp; Reputación</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#f5f2ed;
+  --bg-up:#eae6e0;
+  --surface:#ffffff;
+  --accent:#2d5a4a;
+  --accent-light:#2d5a4a;
+  --accent-dim:rgba(45,90,74,.1);
+  --accent-line:rgba(45,90,74,.18);
+  --cream:#1e1e1c;
+  --cream-dim:#5a574f;
+  --cream-low:#8a8680;
+  --font-d:'Playfair Display',Georgia,serif;
+  --font-b:'Outfit',sans-serif;
+}
+body{
+  background:var(--bg);color:var(--cream);
+  font-family:var(--font-b);font-weight:300;
+  line-height:1.7;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 3.2rem;
+  background:rgba(245,242,237,0.9);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--accent-line);
+}
+.nav-logo{
+  font-family:var(--font-d);font-weight:300;font-size:1.15rem;
+  letter-spacing:.42em;color:#1e1e1c;text-decoration:none;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{color:var(--cream-low);text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;}
+.hero{
+  position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background: linear-gradient(rgba(245,242,237,0.8), rgba(245,242,237,0.8)), url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80') center/cover;
+}
+.hero-title{font-family:var(--font-d);font-size:clamp(2.5rem,6vw,5rem);font-weight:300;margin-bottom:1.5rem;}
+.hero-title em{font-style:italic;color:var(--accent)}
+.btn-primary{
+  display:inline-block;background:var(--accent);color:#fff;padding:.8rem 2rem;
+  text-decoration:none;letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;
+}
+section{padding:6rem 2rem; max-width:1100px; margin:0 auto;}
+.section-title{font-family:var(--font-d); font-size:2.5rem; margin-bottom:2rem; font-weight:300;}
+.reveal{opacity:0; transform:translateY(30px); transition: all 0.8s ease-out;}
+.reveal.visible{opacity:1; transform:translateY(0);}
+.services-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;}
+.service-card{background:var(--surface); padding:2rem; border:1px solid var(--accent-line);}
+footer{background:#1e2420; color:#9e9a94; padding:4rem 2rem; text-align:center; font-size:0.8rem;}
+@media(max-width:768px){ .nav-links{display:none;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">AURA <span>CABINET</span></a>
+  <ul class="nav-links">
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#admision">Admisión</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <p style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 0.7rem; color: var(--accent); margin-bottom: 1rem;">Firma de Estrategia & Reputación</p>
+  <h1 class="hero-title">La reputación no se hereda,<br><em>se diseña.</em></h1>
+  <a href="#admision" class="btn-primary">Solicitar admisión</a>
+</section>
+
+<section id="filosofia" class="reveal">
+  <h2 class="section-title">No somos una agencia. Somos una firma.</h2>
+  <p>En AURA construimos el aura de éxito que precede a todo gran acuerdo. Trabajamos con la arquitectura de lo intangible para materializar resultados financieros y de posicionamiento real.</p>
+</section>
+
+<section id="servicios" class="reveal">
+  <h2 class="section-title">Servicios de alto impacto</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Aura Clarity</h3>
+      <p>Consultoría de diagnóstico y hoja de ruta estratégica.</p>
+    </div>
+    <div class="service-card">
+      <h3>Aura Narrative</h3>
+      <p>Redacción corporativa de autor y narrativa de inversión.</p>
+    </div>
+    <div class="service-card">
+      <h3>Aura Presence</h3>
+      <p>Gestión de influencia en medios y foros estratégicos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="admision" class="reveal" style="text-align:center;">
+  <h2 class="section-title">Admisión</h2>
+  <p style="margin-bottom:2rem;">Seleccionamos un número limitado de clientes para garantizar la excelencia.</p>
+  <a href="mailto:info@auracabinet.com" class="btn-primary">Contactar con la Firma</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 AURA CABINET. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>
