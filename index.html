@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA CABINET | Firma de Estrategia e Influencia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <title>AURA CABINET | Firma de Estrategia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --british-green: #1a2b23;
             --dark: #0a0b0a;
             --surface: #111311;
-            --cream: #e0ddd5;
-            --gold-subtle: rgba(197, 163, 88, 0.4);
+            --cream: #e0ddd5; /* Texto principal */
+            --accent-gold: #c5a358;
             --line: rgba(255, 255, 255, 0.08);
         }
 
@@ -26,114 +26,122 @@
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 
-        /* HERO: Hormigón pulido y Control de Narrativa */
+        /* HERO: El Muro de Hormigón Pulido */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 0 20px;
-            background: linear-gradient(rgba(10,11,10,0.8), rgba(10,11,10,0.8)), 
-            url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; background-position: center;
+            background: linear-gradient(rgba(10,11,10,0.85), rgba(10,11,10,0.9)), 
+            url('https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center; border-bottom: 2px solid var(--british-green);
         }
 
-        .hero p { font-size: 0.75rem; letter-spacing: 6px; color: var(--british-green); text-transform: uppercase; margin-bottom: 2rem; font-weight: 600; }
-        .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 2rem; letter-spacing: -1px; max-width: 1000px; }
-        .hero h1 em { font-style: italic; color: var(--british-green); }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.8rem); margin-bottom: 2rem; letter-spacing: -1px; max-width: 1100px; color: var(--cream); }
+        .hero h1 em { font-style: italic; font-weight: 400; }
+        .hero .brand-tag { font-size: 0.7rem; letter-spacing: 7px; color: var(--british-green); text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 600; }
 
-        /* Mensaje de Lujo y Poder */
-        .narrative-core {
-            background: var(--surface);
-            padding: 8rem 10%;
-            border-bottom: 1px solid var(--line);
+        /* Sección de Metodología de Autor */
+        .protocol-section { padding: 10rem 10%; background: var(--dark); }
+        .intro-text { max-width: 800px; margin-bottom: 6rem; }
+        .intro-text h2 { font-size: 2.8rem; margin-bottom: 2rem; color: var(--cream); }
+        .intro-text p { font-size: 1.1rem; color: #999; font-weight: 300; border-left: 2px solid var(--british-green); padding-left: 2rem; }
+
+        /* Grid de Protocolos: La "Carne" de la web */
+        .protocol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2px; background: var(--line); border: 1px solid var(--line); }
+        .protocol-card { 
+            background: var(--surface); padding: 4rem 3rem; 
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; flex-direction: column;
         }
-        .core-text { max-width: 850px; margin: 0 auto; text-align: center; }
-        .core-text h2 { font-size: 2.5rem; margin-bottom: 2.5rem; line-height: 1.2; }
-        .core-text p { font-size: 1.1rem; color: #888; font-weight: 300; margin-bottom: 1.5rem; }
+        .protocol-card:hover { background: #161816; transform: translateY(-5px); }
+        .protocol-card .num { font-size: 0.7rem; letter-spacing: 3px; color: var(--british-green); margin-bottom: 2rem; font-weight: 600; }
+        .protocol-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--cream); }
+        .protocol-card p { font-size: 0.95rem; color: #888; margin-bottom: 2.5rem; flex-grow: 1; }
 
-        /* Estructura I+D */
-        section { padding: 8rem 10%; border-bottom: 1px solid var(--line); }
-        .tag { color: var(--british-green); text-transform: uppercase; letter-spacing: 5px; font-size: 0.65rem; margin-bottom: 3rem; display: block; font-weight: 600; }
-
-        .id-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; }
-        .id-card { border-left: 1px solid var(--british-green); padding-left: 2.5rem; }
-        .id-card h3 { font-size: 1.6rem; margin-bottom: 1.2rem; }
-        .id-card p { font-size: 0.95rem; color: #777; }
-
-        /* Contacto: Acceso Bajo Acción */
-        .contact-box {
-            text-align: center; padding: 6rem 2rem; background: #0c0e0d;
-            border: 1px solid var(--line); margin-top: 4rem;
+        /* Botones de Acción Específica */
+        .action-link {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; 
+            color: var(--cream); text-decoration: none; border-bottom: 1px solid var(--british-green);
+            padding-bottom: 8px; align-self: flex-start; transition: 0.3s;
         }
+        .action-link:hover { color: var(--british-green); border-color: var(--cream); }
 
+        /* Sección de Contacto Revelable */
+        .private-contact { text-align: center; padding: 10rem 10%; border-top: 1px solid var(--line); }
         .reveal-btn {
-            background: none; border: 1px solid var(--british-green); color: var(--british-green);
-            padding: 1.2rem 3.5rem; font-size: 0.75rem; text-transform: uppercase;
-            letter-spacing: 4px; cursor: pointer; transition: 0.4s; font-weight: 600;
+            background: var(--british-green); border: none; color: var(--cream);
+            padding: 1.2rem 4rem; font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 4px; cursor: pointer; transition: 0.4s; font-weight: 500;
         }
-        .reveal-btn:hover { background: var(--british-green); color: var(--cream); }
+        .reveal-btn:hover { filter: brightness(1.2); }
 
-        .contact-data { 
-            display: none; margin-top: 3rem; animation: fadeIn 0.8s ease-in;
-        }
-        .contact-data a {
-            display: block; font-size: 2.2rem; font-family: 'Playfair Display';
-            color: var(--cream); text-decoration: none; margin-bottom: 1.5rem;
-        }
-        .contact-data .email { font-size: 1.2rem; letter-spacing: 2px; opacity: 0.6; }
+        #contact-data { display: none; margin-top: 4rem; animation: fadeIn 1s forwards; }
+        #contact-data a { display: block; font-size: 2.5rem; font-family: 'Playfair Display'; color: var(--cream); text-decoration: none; margin-bottom: 1rem; }
+        #contact-data .email { font-size: 1.1rem; letter-spacing: 3px; opacity: 0.5; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        footer { padding: 4rem; text-align: center; font-size: 0.65rem; letter-spacing: 4px; color: #444; }
+        footer { padding: 4rem; text-align: center; font-size: 0.6rem; letter-spacing: 5px; color: #444; border-top: 1px solid var(--line); }
+
+        @media (max-width: 768px) { .protocol-section { padding: 6rem 5%; } .hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <p>Firma de Estrategia e Influencia</p>
+        <div class="brand-tag">AURA CABINET</div>
         <h1>El lujo no es ser conocido.<br>Es <em>controlar qué</em> se conoce de ti.</h1>
-        <div style="margin-top: 40px; font-size: 0.7rem; letter-spacing: 3px; color: var(--cream); opacity: 0.4;">STRATEGIC COUNSEL BY INVITATION</div>
+        <p style="font-size: 0.75rem; letter-spacing: 4px; opacity: 0.5;">FIRMA DE ESTRATEGIA E INFLUENCIA</p>
     </section>
 
-    <div class="narrative-core">
-        <div class="core-text">
-            <h2>Controlar la narrativa es ser la dueña de su impacto.</h2>
-            <p>En un mundo hiperconectado, el anonimato es un recurso y la información controlada es un activo. No se trata de estar presente, se trata de estar <strong>como tú quieres y cuando tú quieres</strong>.</p>
-            <p style="color: var(--british-green); font-style: italic;">AURA CABINET: La arquitectura de lo que no se dice.</p>
+    <section class="protocol-section">
+        <div class="intro-text">
+            <h2>Soberanía sobre la información.</h2>
+            <p>No gestionamos visibilidad; blindamos la autoridad de perfiles que no pueden permitirse el anonimato accidental. Diseñamos el guion de cómo el mundo debe interpretarle.</p>
         </div>
-    </div>
 
-    <section id="id">
-        <span class="tag">Protocolo de Captura (I+D)</span>
-        <div class="id-grid">
-            <div class="id-card">
-                <h3>Vaciado</h3>
-                <p>Auditoría de invisibilidad y desmantelamiento de narrativas previas. Identificamos fugas de autoridad antes de cualquier acción estratégica.</p>
+        <div class="protocol-grid">
+            <div class="protocol-card">
+                <span class="num">01 / I+D</span>
+                <h3>Vaciado Narrativo</h3>
+                <p>Auditoría de invisibilidad y desmantelamiento de huella digital previa. Eliminamos el ruido para dejar espacio a la autoridad real.</p>
+                <a href="https://wa.me/34643917257?text=Deseo%20información%20sobre%20el%20Protocolo%20de%20Vaciado%20Narrativo" class="action-link">Solicitar Protocolo</a>
             </div>
-            <div class="id-card">
-                <h3>Arquitectura</h3>
-                <p>Construcción del mensaje de lujo silencioso. Diseñamos una presencia técnica e impecable que impone su propio guion.</p>
+
+            <div class="protocol-card">
+                <span class="num">02 / ARQUITECTURA</span>
+                <h3>Lujo Silencioso</h3>
+                <p>Construcción de una narrativa técnica e impecable. Hablar sin gritar para atraer solo al valor estratégico que le interesa.</p>
+                <a href="mailto:private@auracabinet.com?subject=Consulta:%20Arquitectura%20de%20Lujo%20Silencioso" class="action-link">Consultar Detalles</a>
             </div>
-            <div class="id-card">
-                <h3>Blindaje</h3>
-                <p>Captura de la nueva autoridad. Gestión de influencia y protocolos de protección en ecosistemas de decisión exclusivos.</p>
+
+            <div class="protocol-card">
+                <span class="num">03 / BLINDAJE</span>
+                <h3>Protección de Aura</h3>
+                <p>Protocolos de contención y blindaje en ecosistemas de decisión cerrados. Gestión de crisis antes de que lleguen al dominio público.</p>
+                <a href="https://wa.me/34643917257?text=Deseo%20información%20sobre%20el%20Protocolo%20de%20Blindaje" class="action-link">Activar Blindaje</a>
+            </div>
+
+            <div class="protocol-card">
+                <span class="num">04 / INFLUENCIA</span>
+                <h3>Captura Estratégica</h3>
+                <p>Posicionamiento selectivo en círculos de confianza y relaciones institucionales de élite. Usted decide quién le ve.</p>
+                <a href="mailto:private@auracabinet.com?subject=Consulta:%20Protocolo%20de%20Captura" class="action-link">Solicitar Acceso</a>
             </div>
         </div>
     </section>
 
-    <section id="contacto">
-        <div class="contact-box">
-            <span class="tag" style="margin-bottom: 1rem;">Línea Directa de Autor</span>
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 3.5rem;">Active su protocolo.</h2>
-            
-            <button class="reveal-btn" onclick="reveal()">Solicitar Acceso Estratégico</button>
-            <div class="contact-data" id="contact-data">
-                <a href="tel:+34643917257">+34 643 917 257</a>
-                <a href="mailto:private@auracabinet.com" class="email">private@auracabinet.com</a>
-            </div>
+    <section class="private-contact">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 4rem;">Acceso bajo referencia estratégica.</h2>
+        <button class="reveal-btn" onclick="reveal()">Revelar Línea de Autor</button>
+        
+        <div id="contact-data">
+            <a href="tel:+34643917257">+34 643 917 257</a>
+            <a href="mailto:private@auracabinet.com" class="email">private@auracabinet.com</a>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 AURA CABINET — PRIVATE STRATEGY & REPUTATION MANAGEMENT.
+        &copy; 2026 AURA CABINET — BY INVITATION ONLY.
     </footer>
 
     <script>
@@ -141,6 +149,23 @@
             document.querySelector('.reveal-btn').style.display = 'none';
             document.getElementById('contact-data').style.display = 'block';
         }
+
+        // Efecto scroll suave
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.protocol-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s ease-out';
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
