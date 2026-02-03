@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA CABINET | Private Strategy</title>
+    <title>AURA CABINET | Firma de Estrategia e Influencia</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #c5a358;
+            --british-green: #1a2b23;
             --dark: #0a0b0a;
             --surface: #111311;
             --cream: #e0ddd5;
-            --line: rgba(197, 163, 88, 0.15);
+            --gold-subtle: rgba(197, 163, 88, 0.4);
+            --line: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,140 +26,121 @@
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 
-        /* Estética "Web de Incógnito": Muro de hormigón pulido */
+        /* HERO: Hormigón pulido y Control de Narrativa */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 0 20px;
-            background: linear-gradient(rgba(10,11,10,0.7), rgba(10,11,10,0.85)), 
+            background: linear-gradient(rgba(10,11,10,0.8), rgba(10,11,10,0.8)), 
             url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
         }
 
-        nav {
-            padding: 2.5rem 5%; display: flex; justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 100;
+        .hero p { font-size: 0.75rem; letter-spacing: 6px; color: var(--british-green); text-transform: uppercase; margin-bottom: 2rem; font-weight: 600; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 2rem; letter-spacing: -1px; max-width: 1000px; }
+        .hero h1 em { font-style: italic; color: var(--british-green); }
+
+        /* Mensaje de Lujo y Poder */
+        .narrative-core {
+            background: var(--surface);
+            padding: 8rem 10%;
+            border-bottom: 1px solid var(--line);
         }
-        .logo { font-size: 1.1rem; letter-spacing: 5px; color: var(--gold); text-decoration: none; font-weight: 300; }
+        .core-text { max-width: 850px; margin: 0 auto; text-align: center; }
+        .core-text h2 { font-size: 2.5rem; margin-bottom: 2.5rem; line-height: 1.2; }
+        .core-text p { font-size: 1.1rem; color: #888; font-weight: 300; margin-bottom: 1.5rem; }
 
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 1.5rem; letter-spacing: -1px; }
-        .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
-        .hero p { font-size: 0.9rem; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; font-weight: 300; }
+        /* Estructura I+D */
+        section { padding: 8rem 10%; border-bottom: 1px solid var(--line); }
+        .tag { color: var(--british-green); text-transform: uppercase; letter-spacing: 5px; font-size: 0.65rem; margin-bottom: 3rem; display: block; font-weight: 600; }
 
-        section { padding: 9rem 10%; border-bottom: 1px solid var(--line); position: relative; }
-        .tag { color: var(--gold); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; margin-bottom: 2.5rem; display: block; }
+        .id-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; }
+        .id-card { border-left: 1px solid var(--british-green); padding-left: 2.5rem; }
+        .id-card h3 { font-size: 1.6rem; margin-bottom: 1.2rem; }
+        .id-card p { font-size: 0.95rem; color: #777; }
 
-        /* Servicios con estética de "Informe de Inteligencia" */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; margin-top: 4rem; }
-        .service-card { 
-            padding: 4rem 2.5rem; background: var(--surface); border-left: 1px solid var(--gold);
-            transition: 0.4s ease;
+        /* Contacto: Acceso Bajo Acción */
+        .contact-box {
+            text-align: center; padding: 6rem 2rem; background: #0c0e0d;
+            border: 1px solid var(--line); margin-top: 4rem;
         }
-        .service-card:hover { background: #161816; }
-        .service-card h3 { color: var(--gold); margin-bottom: 1.5rem; font-size: 1.8rem; letter-spacing: 1px; }
-        .service-card p { font-size: 0.95rem; color: #999; margin-bottom: 2rem; }
-        
-        .service-list { list-style: none; font-size: 0.8rem; color: var(--cream); text-transform: uppercase; letter-spacing: 1px; }
-        .service-list li { margin-bottom: 0.8rem; display: flex; align-items: center; }
-        .service-list li::before { content: ""; width: 4px; height: 4px; background: var(--gold); margin-right: 15px; }
 
-        /* Sección Contacto: "By Appointment Only" */
-        .contact-container { text-align: center; max-width: 900px; margin: 0 auto; }
-        .contact-info { margin: 4rem 0; display: flex; flex-direction: column; gap: 2.5rem; }
-        .contact-link { 
-            color: var(--cream); text-decoration: none; font-size: clamp(1.8rem, 4vw, 2.8rem); 
-            font-family: 'Playfair Display'; transition: 0.3s;
+        .reveal-btn {
+            background: none; border: 1px solid var(--british-green); color: var(--british-green);
+            padding: 1.2rem 3.5rem; font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 4px; cursor: pointer; transition: 0.4s; font-weight: 600;
         }
-        .contact-link:hover { color: var(--gold); opacity: 0.8; }
-        
-        .contact-label { font-size: 0.65rem; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem; opacity: 0.7; }
+        .reveal-btn:hover { background: var(--british-green); color: var(--cream); }
 
-        .btn {
-            display: inline-block; padding: 1.2rem 4rem; border: 1px solid var(--gold); color: var(--gold);
-            text-decoration: none; text-transform: uppercase; font-size: 0.8rem; font-weight: 500;
-            letter-spacing: 4px; transition: 0.4s;
+        .contact-data { 
+            display: none; margin-top: 3rem; animation: fadeIn 0.8s ease-in;
         }
-        .btn:hover { background: var(--gold); color: var(--dark); }
+        .contact-data a {
+            display: block; font-size: 2.2rem; font-family: 'Playfair Display';
+            color: var(--cream); text-decoration: none; margin-bottom: 1.5rem;
+        }
+        .contact-data .email { font-size: 1.2rem; letter-spacing: 2px; opacity: 0.6; }
 
-        footer { padding: 6rem 10%; text-align: center; font-size: 0.65rem; letter-spacing: 4px; color: #444; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 768px) { section { padding: 6rem 5%; } .contact-link { font-size: 1.6rem; } }
+        footer { padding: 4rem; text-align: center; font-size: 0.65rem; letter-spacing: 4px; color: #444; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">AURA CABINET</a>
-    </nav>
-
     <section class="hero">
-        <p>Private Strategy & Reputation Management</p>
-        <h1 style="margin-top: 25px;">La arquitectura de <em>lo que no se dice.</em></h1>
-        <div style="margin-top: 30px; font-size: 0.8rem; letter-spacing: 2px; color: var(--cream); opacity: 0.6;">BY INVITATION ONLY</div>
+        <p>Firma de Estrategia e Influencia</p>
+        <h1>El lujo no es ser conocido.<br>Es <em>controlar qué</em> se conoce de ti.</h1>
+        <div style="margin-top: 40px; font-size: 0.7rem; letter-spacing: 3px; color: var(--cream); opacity: 0.4;">STRATEGIC COUNSEL BY INVITATION</div>
     </section>
 
-    <section id="servicios">
-        <span class="tag">Protocolos de Captura (I+D)</span>
-        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Firma de Estrategia e Influencia</h2>
-        <p style="color: #777; max-width: 650px; font-size: 1.1rem; font-weight: 300;">Diseñamos la atmósfera de respeto y autoridad que proyecta su marca al mundo. No gestionamos presencia; blindamos su aura.</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Aura Clarity</h3>
-                <p>Auditoría de invisibilidad. Detectamos las grietas antes de que el mercado las perciba.</p>
-                <ul class="service-list">
-                    <li>Diagnóstico de Autoridad</li>
-                    <li>Análisis de Fugas Reputacionales</li>
-                    <li>Estrategia de Posicionamiento</li>
-                </ul>
+    <div class="narrative-core">
+        <div class="core-text">
+            <h2>Controlar la narrativa es ser la dueña de su impacto.</h2>
+            <p>En un mundo hiperconectado, el anonimato es un recurso y la información controlada es un activo. No se trata de estar presente, se trata de estar <strong>como tú quieres y cuando tú quieres</strong>.</p>
+            <p style="color: var(--british-green); font-style: italic;">AURA CABINET: La arquitectura de lo que no se dice.</p>
+        </div>
+    </div>
+
+    <section id="id">
+        <span class="tag">Protocolo de Captura (I+D)</span>
+        <div class="id-grid">
+            <div class="id-card">
+                <h3>Vaciado</h3>
+                <p>Auditoría de invisibilidad y desmantelamiento de narrativas previas. Identificamos fugas de autoridad antes de cualquier acción estratégica.</p>
             </div>
-            <div class="service-card">
-                <h3>Aura Narrative</h3>
-                <p>Construcción del relato de lujo silencioso. Hablar sin necesidad de gritar.</p>
-                <ul class="service-list">
-                    <li>Redacción Corporativa de Autor</li>
-                    <li>Narrativas para Inversores</li>
-                    <li>Control de Relato Público</li>
-                </ul>
+            <div class="id-card">
+                <h3>Arquitectura</h3>
+                <p>Construcción del mensaje de lujo silencioso. Diseñamos una presencia técnica e impecable que impone su propio guion.</p>
             </div>
-            <div class="service-card">
-                <h3>Aura Presence</h3>
-                <p>Blindaje y expansión estratégica en ecosistemas de decisión cerrados.</p>
-                <ul class="service-list">
-                    <li>Gestión de Medios Estratégicos</li>
-                    <li>Protocolos de Crisis</li>
-                    <li>Relaciones de Élite</li>
-                </ul>
+            <div class="id-card">
+                <h3>Blindaje</h3>
+                <p>Captura de la nueva autoridad. Gestión de influencia y protocolos de protección en ecosistemas de decisión exclusivos.</p>
             </div>
         </div>
     </section>
 
     <section id="contacto">
-        <div class="contact-container">
-            <span class="tag">Contacto Directo</span>
-            <h2 style="font-size: 3.5rem; margin-bottom: 1rem;">Acceso Estratégico</h2>
+        <div class="contact-box">
+            <span class="tag" style="margin-bottom: 1rem;">Línea Directa de Autor</span>
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 3.5rem;">Active su protocolo.</h2>
             
-            <div class="contact-info">
-                <div>
-                    <p class="contact-label">Línea Directa</p>
-                    <a href="tel:+34643917257" class="contact-link">+34 643 917 257</a>
-                </div>
-                <div>
-                    <p class="contact-label">Correo Electrónico</p>
-                    <a href="mailto:info@auracabinet.com" class="contact-link">info@auracabinet.com</a>
-                </div>
-            </div>
-            
-            <a href="mailto:info@auracabinet.com" class="btn">Solicitar Auditoría</a>
-            
-            <div style="margin-top: 6rem; font-size: 0.75rem; color: #555; letter-spacing: 3px;">
-                <p>MADRID | SERRANO | BY APPOINTMENT ONLY</p>
+            <button class="reveal-btn" onclick="reveal()">Solicitar Acceso Estratégico</button>
+            <div class="contact-data" id="contact-data">
+                <a href="tel:+34643917257">+34 643 917 257</a>
+                <a href="mailto:private@auracabinet.com" class="email">private@auracabinet.com</a>
             </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 AURA CABINET. ESTRATEGIA PARA QUIENES NO PERMITEN EL ANONIMATO.
+        &copy; 2026 AURA CABINET — PRIVATE STRATEGY & REPUTATION MANAGEMENT.
     </footer>
 
+    <script>
+        function reveal() {
+            document.querySelector('.reveal-btn').style.display = 'none';
+            document.getElementById('contact-data').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
