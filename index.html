@@ -7,152 +7,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
+            --mineral: #e5e5e0; 
             --british-green: #1a2b23;
-            --dark-bg: #0a0b0a;
-            --surface: #141614;
-            --text-main: #f4f1ea; /* Crema mineral, mucho más legible */
-            --text-dim: #949494;
-            --accent: #1a2b23;
-            --line: rgba(255, 255, 255, 0.1);
+            --deep-ink: #0d0e0d;
+            --white: #ffffff;
+            --line: rgba(0, 0, 0, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: var(--dark-bg); 
-            color: var(--text-main); 
+            background-color: var(--mineral); 
+            color: var(--deep-ink); 
             font-family: 'Outfit', sans-serif; 
-            line-height: 1.6;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.5px; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.02em; }
 
-        /* HERO: El reflejo del rascacielos (Punto 1 del Word) */
         .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px;
-            background: linear-gradient(rgba(10,11,10,0.6), rgba(10,11,10,0.85)), 
-            url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000'); /* Arquitectura Acero/Cristal */
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+            padding: 0 10%;
+            background: linear-gradient(rgba(229, 229, 224, 0.4), rgba(229, 229, 224, 0.6)), 
+            url('https://images.unsplash.com/photo-1518005020251-582c788447d9?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
         }
 
-        .hero .tag { font-size: 0.7rem; letter-spacing: 8px; color: var(--text-main); text-transform: uppercase; margin-bottom: 2rem; opacity: 0.6; }
-        .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 2rem; max-width: 1000px; line-height: 1.1; }
-        .hero h1 em { font-style: italic; opacity: 0.9; }
+        .hero .brand { font-size: 0.8rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 2rem; color: var(--british-green); font-weight: 600; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; max-width: 900px; color: var(--deep-ink); }
+        .hero h1 em { font-style: italic; color: var(--british-green); }
 
-        /* Mensaje de Diferenciación */
-        .manifesto { padding: 10rem 10%; background: var(--dark-bg); border-bottom: 1px solid var(--line); }
-        .manifesto-content { max-width: 800px; }
-        .manifesto h2 { font-size: 2.5rem; margin-bottom: 2.5rem; }
-        .manifesto p { font-size: 1.2rem; color: var(--text-dim); font-weight: 300; margin-bottom: 2rem; }
+        /* MANIFIESTO: El concepto de Autogestión Asistida */
+        .manifesto { padding: 12rem 10%; background: var(--white); border-bottom: 1px solid var(--line); }
+        .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: flex-start; }
+        .manifesto h2 { font-size: 3rem; line-height: 1.1; }
+        .manifesto p { font-size: 1.2rem; color: #555; font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem; }
+        .highlight { color: var(--british-green); font-weight: 500; border-left: 2px solid var(--british-green); padding-left: 1.5rem; margin-top: 2rem; }
 
-        /* Protocolos I+D: "La Carne" */
-        .protocols { padding: 8rem 10%; background: var(--surface); }
-        .protocol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 4rem; }
+        /* PROTOCOLOS: Estructura técnica */
+        .id-section { padding: 8rem 10%; background: var(--mineral); }
+        .protocol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
         
         .protocol-card { 
-            border-top: 1px solid var(--line); padding-top: 2rem; 
-            transition: 0.4s ease;
+            background: var(--mineral); padding: 5rem 4rem; 
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .protocol-card:hover { border-top-color: var(--text-main); }
-        .protocol-card .num { font-size: 0.65rem; color: var(--text-dim); display: block; margin-bottom: 1.5rem; letter-spacing: 3px; }
-        .protocol-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main); }
-        .protocol-card p { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 2rem; min-height: 80px; }
+        .protocol-card:hover { background: var(--white); }
+        .protocol-card .phase { font-size: 0.7rem; letter-spacing: 4px; color: var(--british-green); margin-bottom: 2rem; display: block; font-weight: 600; }
+        .protocol-card h3 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--deep-ink); }
+        .protocol-card p { font-size: 1rem; color: #666; margin-bottom: 3rem; }
 
-        /* Botones Técnicos con mensaje específico */
-        .btn-protocol {
-            display: inline-block; padding: 12px 25px; border: 1px solid var(--line);
-            color: var(--text-main); text-decoration: none; font-size: 0.7rem;
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+        .action-btn {
+            display: inline-block; padding: 1rem 2.5rem; border: 1px solid var(--deep-ink);
+            color: var(--deep-ink); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 3px; transition: 0.3s;
         }
-        .btn-protocol:hover { background: var(--text-main); color: var(--dark-bg); }
+        .action-btn:hover { background: var(--british-green); color: var(--white); border-color: var(--british-green); }
 
-        /* Contacto */
-        .contact-section { padding: 10rem 10%; text-align: center; }
-        .reveal-btn {
-            background: none; border: 1px solid var(--text-main); color: var(--text-main);
-            padding: 1.5rem 4rem; font-size: 0.8rem; text-transform: uppercase;
-            letter-spacing: 5px; cursor: pointer; transition: 0.4s;
-        }
-        .reveal-btn:hover { background: var(--text-main); color: var(--dark-bg); }
+        .contact-gate { padding: 10rem 10%; text-align: center; background: var(--white); }
+        .contact-gate h2 { font-size: 3.5rem; margin-bottom: 3rem; }
 
-        #final-contact { display: none; margin-top: 4rem; animation: fadeIn 1s forwards; }
-        #final-contact a { display: block; font-size: 2.5rem; font-family: 'Playfair Display'; color: var(--text-main); text-decoration: none; margin-bottom: 1rem; }
+        footer { padding: 6rem 10%; text-align: center; font-size: 0.7rem; letter-spacing: 5px; color: #999; text-transform: uppercase; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        footer { padding: 4rem; text-align: center; font-size: 0.6rem; letter-spacing: 5px; color: #444; }
+        @media (max-width: 992px) { .manifesto-grid { grid-template-columns: 1fr; } .hero { padding: 0 5%; } }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="tag">AURA CABINET</div>
-        <h1>El lujo no es ser conocido.<br>Es <em>controlar</em> qué se sabe de ti.</h1>
-        <p style="margin-top:20px; opacity: 0.5; letter-spacing: 3px; font-size: 0.7rem;">STRATEGIC COUNSEL FOR LEADERS</p>
+        <div class="brand">AURA CABINET</div>
+        <h1>El lujo no es ser conocido.<br>Es <em>decidir qué</em> se sabe de ti.</h1>
+        <p style="margin-top: 30px; letter-spacing: 3px; font-size: 0.8rem; opacity: 0.6;">FIRMA DE ESTRATEGIA E INFLUENCIA</p>
     </section>
 
     <section class="manifesto">
-        <div class="manifesto-content">
-            <h2>Usted no necesita más visibilidad.<br>Necesita más soberanía.</h2>
-            <p>En AURA CABINET no gestionamos prensa; diseñamos la atmósfera de respeto y autoridad que su activo más sagrado proyecta al mundo. Gestionamos la brecha entre la realidad y la percepción.</p>
-            <p style="font-size: 1rem; font-style: italic; color: var(--text-main);">Firma de Estrategia e Influencia.</p>
+        <div class="manifesto-grid">
+            <h2>El arte de la<br>Soberanía Percibida.</h2>
+            <div>
+                <p>Nuestra metodología no busca delegar su identidad, sino potenciar su capacidad de control. El objetivo es proyectar una imagen de autogestión absoluta: que usted sea percibido como el único y magistral arquitecto de su propia narrativa.</p>
+                <p>Mientras usted lidera la escena con una autoridad natural e incuestionable, AURA opera desde el reverso, blindando cada movimiento y diseñando el guion que el mercado leerá como una intuición propia.</p>
+                <div class="highlight">
+                    Usted gestiona el poder. Nosotros gestionamos el mecanismo que lo hace posible.
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="protocols">
-        <span style="font-size: 0.6rem; letter-spacing: 5px; color: var(--text-dim);">METODOLOGÍA I+D</span>
+    <section class="id-section">
         <div class="protocol-grid">
-            
             <div class="protocol-card">
-                <span class="num">Fase 01 / INVESTIGACIÓN</span>
+                <span class="phase">FASE 01 / I+D</span>
                 <h3>Vaciado Narrativo</h3>
-                <p>Auditoría de invisibilidad y desmantelamiento de huella digital previa. Eliminamos el ruido para que solo su mensaje oficial sea el que prevalezca.</p>
-                <a href="https://wa.me/34643917257?text=Consulta%20sobre%20Protocolo%2001:%20Vaciado%20Narrativo" class="btn-protocol">Solicitar Auditoría</a>
+                <p>Auditoría técnica de invisibilidad. Desmantelamos la huella previa para que su nueva autoridad nazca de un terreno limpio y bajo su mando exclusivo.</p>
+                <a href="mailto:private@auracabinet.com?subject=Solicitud%20de%20Protocolo%2001:%20Vaciado" class="action-btn">Iniciar Auditoría</a>
             </div>
 
             <div class="protocol-card">
-                <span class="num">Fase 02 / DISEÑO</span>
-                <h3>Arquitectura de Lujo</h3>
-                <p>Construcción de una narrativa técnica e impecable. El "saber hacer" que no necesita gritar para ser reconocido por los perfiles de decisión.</p>
-                <a href="mailto:private@auracabinet.com?subject=Interés%20en%20Protocolo%2002:%20Arquitectura%20de%20Mensaje" class="btn-protocol">Consultar Estructura</a>
+                <span class="phase">FASE 02 / DISEÑO</span>
+                <h3>Arquitectura de Aura</h3>
+                <p>Construcción de un relato de lujo silencioso. Mensajes diseñados para que su influencia parezca una consecuencia natural de su genialidad.</p>
+                <a href="mailto:private@auracabinet.com?subject=Solicitud%20de%20Protocolo%2002:%20Arquitectura" class="action-btn">Diseñar Relato</a>
             </div>
 
             <div class="protocol-card">
-                <span class="num">Fase 03 / OPERACIÓN</span>
-                <h3>Gestión de Influencia</h3>
-                <p>Posicionamiento selectivo en ecosistemas cerrados y círculos de confianza. Usted decide quién le ve y bajo qué términos.</p>
-                <a href="https://wa.me/34643917257?text=Consulta%20sobre%20Protocolo%2003:%20Gestión%20de%20Influencia" class="btn-protocol">Activar Captura</a>
+                <span class="phase">FASE 03 / OPERACIÓN</span>
+                <h3>Captura de Influencia</h3>
+                <p>Implementación en círculos de confianza. Usted aparece en el momento exacto, con el mensaje exacto, proyectando un control magistral del entorno.</p>
+                <a href="mailto:private@auracabinet.com?subject=Solicitud%20de%20Protocolo%2003:%20Influencia" class="action-btn">Activar Protocolo</a>
             </div>
 
             <div class="protocol-card">
-                <span class="num">Fase 04 / PROTECCIÓN</span>
-                <h3>Blindaje de Aura</h3>
-                <p>Protocolos de contención y protección de reputación ante crisis latentes. El silencio como la mejor defensa de su activo personal.</p>
-                <a href="mailto:private@auracabinet.com?subject=Interés%20en%20Protocolo%2004:%20Blindaje%20Estratégico" class="btn-protocol">Solicitar Blindaje</a>
+                <span class="phase">FASE 04 / BLINDAJE</span>
+                <h3>Protección Estratégica</h3>
+                <p>Gestión profesional del silencio. Blindamos su reputación para que su imagen de autogestión permanezca intacta ante cualquier crisis externa.</p>
+                <a href="mailto:private@auracabinet.com?subject=Solicitud%20de%20Protocolo%2004:%20Blindaje" class="action-btn">Solicitar Blindaje</a>
             </div>
-
         </div>
     </section>
 
-    <section class="contact-section">
-        <h2 style="margin-bottom: 4rem; font-size: 2.2rem;">Acceso restringido a referencia estratégica.</h2>
-        <button class="reveal-btn" onclick="reveal()">Revelar Línea Directa</button>
-        
-        <div id="final-contact">
-            <a href="tel:+34643917257">+34 643 917 257</a>
-            <p style="letter-spacing: 3px; opacity: 0.6; font-size: 0.8rem;">private@auracabinet.com</p>
-        </div>
+    <section class="contact-gate">
+        <p style="letter-spacing: 5px; color: var(--british-green); margin-bottom: 2rem; text-transform: uppercase; font-size: 0.7rem; font-weight: 600;">By Appointment Only</p>
+        <h2>Acceso bajo referencia.</h2>
+        <a href="mailto:private@auracabinet.com" class="action-btn" style="padding: 1.5rem 5rem; background: var(--deep-ink); color: var(--white);">Contactar con el Gabinete</a>
     </section>
 
     <footer>
-        &copy; 2026 AURA CABINET. BY APPOINTMENT ONLY. MADRID.
+        &copy; 2026 AURA CABINET — PRIVATE STRATEGY. MADRID.
     </footer>
 
-    <script>
-        function reveal() {
-            document.querySelector('.reveal-btn').style.display = 'none';
-            document.getElementById('final-contact').style.display = 'block';
-        }
-    </script>
 </body>
 </html>
