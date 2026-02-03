@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA CABINET | Estrategia de Captura & Blindaje</title>
+    <title>AURA CABINET | Dueña de tu Narrativa</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -25,60 +25,58 @@
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 
-        /* Estética de fondo con grano y gradiente */
         .grain {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url(https://grainy-gradients.vercel.app/noise.svg);
-            opacity: 0.05; pointer-events: none; z-index: 50;
+            opacity: 0.04; pointer-events: none; z-index: 50;
         }
 
-        /* Navegación */
         nav {
             padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 100; background: linear-gradient(to bottom, rgba(15,17,16,0.8), transparent);
+            position: fixed; width: 100%; z-index: 100; background: linear-gradient(to bottom, rgba(15,17,16,0.9), transparent);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 4px; color: var(--gold); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 4px; color: var(--gold); text-decoration: none; }
 
-        /* Hero Section */
+        /* Hero Section - Imagen de Mujer Empoderada */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; background: linear-gradient(rgba(15,17,16,0.6), rgba(15,17,16,0.9)), 
-            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            text-align: center; background: linear-gradient(rgba(15,17,16,0.5), rgba(15,17,16,0.85)), 
+            url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center; padding: 0 20px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1rem; letter-spacing: -1px; }
-        .hero p { font-size: 1.2rem; max-width: 800px; font-weight: 200; color: var(--text-gray); }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 1.5rem; letter-spacing: -1px; line-height: 1.1; }
+        .hero h1 em { font-style: italic; color: var(--gold); }
+        .hero p { font-size: 1.2rem; max-width: 750px; font-weight: 300; color: var(--cream); margin-bottom: 2rem; }
 
-        /* Secciones Generales */
-        section { padding: 10rem 10%; position: relative; }
-        .section-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 1rem; display: block; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        section { padding: 8rem 10%; position: relative; }
+        .section-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 1.5rem; display: block; }
 
-        /* I+D Structure / Protocolo */
-        .protocol-box {
-            border-left: 1px solid var(--gold); padding-left: 2rem; margin-top: 2rem;
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+        /* El Gancho: Control de la Narrativa */
+        .narrative-box {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem;
+            border: 1px solid rgba(197, 163, 88, 0.2);
+            border-radius: 4px;
         }
-        .phase { margin-bottom: 3rem; }
-        .phase h3 { color: var(--gold); margin-bottom: 0.5rem; }
 
-        /* Imagenes IA/Soporte */
-        .img-container { width: 100%; height: 500px; overflow: hidden; border-radius: 2px; }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4) contrast(1.1); transition: 0.5s; }
-        .img-container img:hover { filter: grayscale(0); transform: scale(1.05); }
+        .img-container { width: 100%; height: 600px; overflow: hidden; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
 
-        /* Botones */
         .cta {
-            display: inline-block; padding: 1rem 2.5rem; border: 1px solid var(--gold);
-            color: var(--gold); text-decoration: none; text-transform: uppercase;
-            font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; margin-top: 2rem;
+            display: inline-block; padding: 1.2rem 3rem; background: var(--gold);
+            color: var(--dark); text-decoration: none; text-transform: uppercase;
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; transition: 0.3s; 
         }
-        .cta:hover { background: var(--gold); color: var(--dark); }
+        .cta:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197, 163, 88, 0.3); }
 
-        /* Mobile */
+        .footer-text { padding: 4rem; text-align: center; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-gray); border-top: 1px solid #222; }
+
         @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
+            .grid { grid-template-columns: 1fr; gap: 3rem; }
             section { padding: 5rem 5%; }
-            nav { padding: 1rem 2rem; }
+            nav { padding: 1.5rem 2rem; }
         }
     </style>
 </head>
@@ -86,70 +84,65 @@
     <div class="grain"></div>
 
     <nav>
-        <div class="logo">AURA CABINET</div>
-        <div style="font-size: 0.7rem; letter-spacing: 2px;">ESTRATEGIA & REPUTACIÓN</div>
+        <a href="#" class="logo">AURA CABINET</a>
     </nav>
 
     <section class="hero">
-        <span class="section-tag">Bienvenido a la Élite de la Percepción</span>
-        <h1>La arquitectura de la autoridad.</h1>
-        <p>No gestionamos crisis. Diseñamos blindajes. Ejecutamos el Protocolo de Captura para marcas y líderes que no permiten el anonimato.</p>
-        <a href="#contacto" class="cta">Activar Protocolo de Captura</a>
+        <span class="section-tag">Bienvenida a la Firma</span>
+        <h1>Haz que sepan de ti <em>lo que quieres</em><br>y como tú quieres.</h1>
+        <p>En un mundo donde todos opinan, retomar el mando de tu historia no es un lujo, es tu mayor activo estratégico.</p>
+        <a href="#contacto" class="cta">Tomar el Control</a>
     </section>
 
-    <section id="metodologia">
+    <section>
         <div class="grid">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=1000" alt="Liderazgo Femenino Aura Cabinet">
+            </div>
             <div>
-                <span class="section-tag">I+D de Reputación</span>
-                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Estructura de Captura</h2>
-                <div class="protocol-box">
-                    <div class="phase">
-                        <h3>FASE I: Auditoría de Invisibilidad</h3>
-                        <p>Analizamos las grietas en tu posicionamiento actual y la fuga de autoridad hacia tu competencia.</p>
-                    </div>
-                    <div class="phase">
-                        <h3>FASE II: Arquitectura de Mensaje</h3>
-                        <p>Diseño de la narrativa de "Lujo Silencioso". Hablar sin gritar para atraer al cliente de alto valor.</p>
-                    </div>
-                    <div class="phase">
-                        <h3>FASE III: Blindaje y Expansión</h3>
-                        <p>Protocolos de contención y creación de ecosistemas de influencia cerrados.</p>
-                    </div>
+                <span class="section-tag">El Concepto</span>
+                <h2 style="font-size: 2.8rem; margin-bottom: 2rem; line-height: 1.2;">Controlar la narrativa es <br><em>ser la dueña</em> de tu impacto.</h2>
+                <div class="narrative-box">
+                    <p style="margin-bottom: 1.5rem;">La gente va a hablar de ti, de tu marca y de tu éxito. La pregunta es: <strong>¿vas a dejar que ellos escriban el guion o vas a ser tú quien dirija la conversación?</strong></p>
+                    <p>En Aura Cabinet transformamos tu mensaje para que sea magnético, claro y, sobre todo, tuyo. No se trata de fingir, sino de proyectar tu excelencia sin pedir permiso.</p>
                 </div>
             </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1000" alt="Estrategia de negocios">
+        </div>
+    </section>
+
+    <section id="metodologia" style="background-color: #0d0e0d;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="section-tag">Metodología I+D</span>
+            <h2 style="font-size: 3rem; margin-bottom: 3rem;">El Protocolo de Captura</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left;">
+                <div>
+                    <h3 style="color: var(--gold); margin-bottom: 1rem;">01. Escuchar</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Detectamos qué dice el mundo de ti hoy y dónde están las fugas de tu autoridad.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--gold); margin-bottom: 1rem;">02. Diseñar</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Creamos la arquitectura de tu nuevo mensaje. Elegante, potente y auténtico.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--gold); margin-bottom: 1rem;">03. Blindar</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Ejecutamos la estrategia para que tu reputación sea una fortaleza inexpugnable.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="background-color: #141615;">
-        <div class="grid">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1000" alt="Exclusividad">
-            </div>
-            <div>
-                <span class="section-tag">Tu Nueva Realidad</span>
-                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Resultados de Posicionamiento Real</h2>
-                <p>Basado en tu estructura de I+D, transformamos lo intangible en un activo financiero. El Protocolo de Captura no es solo visibilidad; es el control total sobre cómo el mercado percibe tu valor.</p>
-                <p style="margin-top: 1rem; color: var(--text-gray);">Trabajamos bajo estricta confidencialidad para asegurar que tu autoridad sea indiscutible.</p>
-            </div>
-        </div>
+    <section id="contacto" style="text-align: center; padding-bottom: 10rem;">
+        <span class="section-tag">Contacto Exclusivo</span>
+        <h2 style="font-size: 3.5rem; margin-bottom: 2rem;">¿Empezamos a escribir <br><em>tu versión</em>?</h2>
+        <p style="max-width: 600px; margin: 0 auto 3rem; color: var(--text-gray);">Si buscas una firma que entienda que tu reputación es tu patrimonio más sagrado, estás en el lugar correcto.</p>
+        <a href="mailto:info@auracabinet.com" class="cta">Solicitar Auditoría de Narrativa</a>
     </section>
 
-    <section id="contacto" style="text-align: center;">
-        <span class="section-tag">Acceso Restringido</span>
-        <h2 style="font-size: 3.5rem;">¿Listo para activar el protocolo?</h2>
-        <p style="max-width: 600px; margin: 1.5rem auto;">La admisión es selectiva. Solo aceptamos proyectos donde la excelencia es el estándar mínimo.</p>
-        <a href="mailto:info@auracabinet.com" class="cta">Solicitar Auditoría de Entrada</a>
-    </section>
-
-    <footer style="padding: 4rem; text-align: center; border-top: 1px solid #222; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-gray);">
-        &copy; 2026 AURA CABINET — FIRMA DE ESTRATEGIA & REPUTACIÓN. TODOS LOS DERECHOS RESERVADOS.
+    <footer class="footer-text">
+        &copy; 2026 AURA CABINET — FIRMA DE ESTRATEGIA & REPUTACIÓN. <br>DISEÑADA PARA QUIENES LIDERAN.
     </footer>
 
     <script>
-        // Efecto revelador al hacer scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -161,8 +154,8 @@
 
         document.querySelectorAll('section').forEach(section => {
             section.style.opacity = 0;
-            section.style.transform = 'translateY(50px)';
-            section.style.transition = 'all 1s ease-out';
+            section.style.transform = 'translateY(40px)';
+            section.style.transition = 'all 1.2s ease-out';
             observer.observe(section);
         });
     </script>
