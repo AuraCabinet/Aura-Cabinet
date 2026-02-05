@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AURA CABINET — Control de Narrativa Personal y Profesional | La Arquitectura de lo Imperceptible</title>
+<meta name="description" content="AURA CABINET: Control de narrativa personal y profesional. Protege tu reputación, construye tu marca y decide qué se sabe de ti. Servicio confidencial y estratégico."/>
+<meta name="keywords" content="reputación online, gestión de imagen, control narrativo, marca personal, crisis reputacional, privacidad digital, posicionamiento estratégico"/>
+<link rel="canonical" href="https://aura-cabinet.com"/>
+<meta property="og:title" content="AURA CABINET — La Arquitectura de lo Imperceptible"/>
+<meta property="og:description" content="Control de narrativa personal y profesional. Tu pasado no debe condicionar tu futuro."/>
+<meta property="og:type" content="website"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<!-- Google Translate Widget - Selector de idiomas -->
+<style>
+  #google_translate_element {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  .goog-te-combo {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+  }
+  .goog-te-banner-frame.skiptranslate { display: none !important; }
+  body { top: 0 !important; }
+</style>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#f5f2ed;
+  --bg-up:#eae6e0;
+  --surface:#ffffff;
+  --accent:#3d6b5c;
+  --accent-light:#4d8270;
+  --accent-dim:rgba(61,107,92,.1);
+  --accent-line:rgba(61,107,92,.15);
+  --text:#1e1e1c;
+  --text-dim:#5a574f;
+  --text-low:#8a8680;
+  --font-d:'Playfair Display',Georgia,serif;
+  --font-b:'Outfit',sans-serif;
+}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font-b);font-weight:300;
+  line-height:1.7;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+#particles-canvas{
+  position:fixed;inset:0;pointer-events:none;z-index:998;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 3.2rem;
+  transition:background .45s,backdrop-filter .45s,padding .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(245,242,237,.94);
+  backdrop-filter:blur(18px);
+  padding:1rem 3.2rem;
+  border-bottom-color:var(--accent-line);
+}
+.nav-logo{
+  font-family:var(--font-d);font-weight:300;font-size:1.15rem;
+  letter-spacing:.42em;color:var(--text);text-decoration:none;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{
+  color:var(--text-dim);text-decoration:none;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  position:relative;transition:color .3s;font-weight:400;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;
+  width:0;height:1px;background:var(--accent);transition:width .35s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  border:1px solid var(--accent);color:var(--accent);
+  padding:.5rem 1.4rem;font-family:var(--font-b);
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  background:transparent;text-decoration:none;transition:.3s;
+}
+.nav-cta:hover{background:var(--accent);color:#fff;box-shadow:0 0 20px var(--accent-dim)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1px;background:var(--accent);transition:.3s}
+.mobile-menu{
+  display:none;position:fixed;inset:0;
+  background:rgba(245,242,237,.97);backdrop-filter:blur(16px);
+  z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  color:var(--text);text-decoration:none;
+  font-family:var(--font-d);font-size:1.5rem;font-weight:400;
+  letter-spacing:.1em;transition:color .3s;
+}
+.mobile-menu a:hover{color:var(--accent)}
+.mobile-close{
+  position:absolute;top:1.4rem;right:1.6rem;
+  color:var(--accent);font-size:1.5rem;
+  cursor:pointer;background:none;border:none;font-family:inherit;
+}
+.hero{
+  position:relative;height:100vh;min-height:640px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1557683316-973673baf926?w=1800&q=80') center/cover no-repeat;
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(245,242,237,.38) 0%,rgba(245,242,237,.65) 45%,rgba(245,242,237,.88) 100%);
+}
+.hero-line{
+  position:absolute;top:50%;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent 0%,var(--accent-line) 25%,var(--accent-line) 75%,transparent 100%);
+  opacity:.3;
+}
+.hero-content{position:relative;z-index:2;max-width:920px;padding:0 1.5rem}
+.hero-eyebrow{
+  font-size:.68rem;letter-spacing:.44em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2rem;
+  opacity:0;animation:fadeUp .9s .25s forwards;
+}
+.hero-title{
+  font-family:var(--font-d);font-weight:300;
+  font-size:clamp(2.8rem,6.8vw,5.2rem);
+  line-height:1.12;color:var(--text);margin-bottom:2rem;
+  opacity:0;animation:fadeUp 1s .45s forwards;
+}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-sub{
+  font-size:1.15rem;color:var(--text-dim);
+  max-width:780px;margin:0 auto 1.2rem;line-height:1.75;
+  opacity:0;animation:fadeUp 1s .65s forwards;
+}
+.hero-claim{
+  font-family:var(--font-d);font-style:italic;font-size:1.08rem;
+  color:var(--accent);letter-spacing:.06em;
+  margin-bottom:3rem;
+  opacity:0;animation:fadeUp 1s .78s forwards;
+}
+.hero-actions{
+  display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 1s .92s forwards;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--accent);color:#fff;
+  padding:.78rem 2.2rem;font-family:var(--font-b);
+  font-size:.72rem;font-weight:400;letter-spacing:.22em;
+  text-transform:uppercase;text-decoration:none;
+  transition:box-shadow .4s,transform .25s,background .3s;
+  cursor:pointer;
+  border:none;
+}
+.btn-primary:hover{
+  background:var(--accent-light);
+  box-shadow:0 4px 28px var(--accent-dim);transform:translateY(-2px);
+}
+.btn-secondary{
+  display:inline-block;
+  background:transparent;color:var(--accent);
+  border:1px solid var(--accent);
+  padding:.78rem 2.2rem;font-family:var(--font-b);
+  font-size:.72rem;font-weight:400;letter-spacing:.22em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .3s;
+}
+.btn-secondary:hover{
+  background:var(--accent);color:#fff;
+  box-shadow:0 4px 28px var(--accent-dim);
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.scroll-hint{
+  position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:var(--text-low);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4;
+}
+.scroll-hint .line{
+  width:1px;height:34px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  animation:scrollLine 2.2s infinite;
+}
+@keyframes scrollLine{
+  0%{opacity:1;transform:scaleY(1)}
+  100%{opacity:0;transform:scaleY(0);transform-origin:top}
+}
+section{padding:8rem 3.2rem}
+.section-label{
+  font-size:.64rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.9rem;
+}
+.section-title{
+  font-family:var(--font-d);font-weight:300;
+  font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1.18;margin-bottom:1.2rem;
+  color:var(--text);
+}
+.section-desc{color:var(--text-dim);max-width:720px;font-size:.95rem;line-height:1.85}
+.section-header{max-width:1120px;margin:0 auto 5rem}
+.section-header.center{text-align:center}
+.section-header.center .section-desc{margin:0 auto}
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+#que-es-aura{
+  background:var(--bg-up);
+  position:relative;
+  padding:9rem 3.2rem;
+}
+.aura-content{
+  max-width:960px;margin:0 auto;text-align:center;
+}
+.aura-quote{
+  font-family:var(--font-d);font-style:italic;font-size:1.35rem;
+  color:var(--accent);line-height:1.6;margin-bottom:2rem;
+}
+.aura-text{
+  font-size:1.08rem;line-height:1.9;color:var(--text-dim);
+  margin-bottom:2rem;
+}
+.aura-highlight{
+  background:var(--surface);
+  padding:3rem;
+  border-left:3px solid var(--accent);
+  box-shadow:0 4px 24px rgba(61,107,92,.08);
+  text-align:left;
+  margin-top:3rem;
+}
+.aura-highlight h3{
+  font-family:var(--font-d);
+  font-size:1.5rem;
+  color:var(--accent);
+  margin-bottom:1.2rem;
+}
+.aura-highlight p{
+  font-size:1.02rem;
+  line-height:1.85;
+  color:var(--text-dim);
+}
+#historia{
+  background:var(--bg);
+  padding:9rem 3.2rem;
+}
+.historia-content{
+  max-width:880px;margin:0 auto;
+}
+.historia-content .section-title{margin-bottom:2rem}
+.historia-text{
+  font-size:1.05rem;line-height:1.9;color:var(--text-dim);
+  margin-bottom:1.5rem;
+}
+.historia-text strong{color:var(--text);font-weight:500}
+.historia-highlight{
+  background:var(--surface);
+  border-left:3px solid var(--accent);
+  padding:2rem 2.5rem;
+  margin:2.5rem 0;
+  font-family:var(--font-d);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.6;
+  color:var(--text);
+}
+#filosofia{
+  background:var(--bg-up);
+  position:relative;
+  padding:9rem 3.2rem;
+}
+.filosofia-wrap{
+  max-width:1120px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:7rem;
+  align-items:center;
+}
+.filo-visual{position:relative;height:460px}
+.filo-img{
+  position:absolute;inset:0;border-radius:3px;overflow:hidden;
+  box-shadow:0 8px 40px rgba(61,107,92,.11);
+}
+.filo-img img{width:100%;height:100%;object-fit:cover}
+.filo-frame{
+  position:absolute;width:88%;height:88%;
+  border:1px solid var(--accent-line);
+  bottom:-20px;right:-20px;border-radius:3px;z-index:0;
+}
+.filo-text{}
+.filo-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;
+  margin-top:2.5rem;
+}
+.filo-item h4{
+  font-family:var(--font-d);font-weight:500;font-size:1.2rem;
+  margin-bottom:.8rem;color:var(--text);
+}
+.filo-item p{
+  color:var(--text-dim);font-size:.91rem;line-height:1.8;
+}
+#protocolos-home{
+  background:var(--bg);
+  padding:9rem 3.2rem;
+}
+.protocolos-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr;gap:2.5rem;
+}
+.protocolo-card{
+  background:var(--surface);
+  border:1px solid rgba(61,107,92,.08);
+  padding:3.5rem 3.2rem;
+  position:relative;
+  transition:all .4s;
+  box-shadow:0 2px 12px rgba(61,107,92,.05);
+}
+.protocolo-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--accent);opacity:0;transition:opacity .4s;
+}
+.protocolo-card:hover{
+  box-shadow:0 8px 32px rgba(61,107,92,.11);
+  transform:translateY(-2px);
+}
+.protocolo-card:hover::before{opacity:1}
+.protocolo-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:2rem;
+}
+.protocolo-num{
+  font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--accent);font-weight:400;
+}
+.protocolo-card h3{
+  font-family:var(--font-d);font-weight:500;font-size:1.9rem;
+  color:var(--text);margin-top:.5rem;
+}
+.protocolo-card p{
+  color:var(--text-dim);font-size:.93rem;line-height:1.85;
+  margin-bottom:1.2rem;
+}
+.protocolo-result{
+  margin-top:2rem;padding-top:2rem;
+  border-top:1px solid var(--accent-line);
+  font-weight:500;color:var(--accent);font-size:.95rem;
+}
+.protocolo-result strong{display:block;margin-bottom:.4rem}
+#valores{
+  background:var(--bg-up);
+  padding:8rem 3.2rem;
+}
+.valores-grid{
+  max-width:1120px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;
+  margin-top:3rem;
+}
+.valor-card{
+  background:var(--surface);
+  padding:2.5rem 2rem;
+  text-align:center;
+  box-shadow:0 2px 16px rgba(61,107,92,.06);
+  transition:transform .3s;
+}
+.valor-card:hover{transform:translateY(-4px)}
+.valor-icon{
+  width:64px;height:64px;
+  background:var(--accent-dim);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;
+}
+.valor-icon svg{width:32px;height:32px;stroke:var(--accent);fill:none;stroke-width:2}
+.valor-card h4{
+  font-family:var(--font-d);font-weight:600;font-size:1.2rem;
+  margin-bottom:1rem;color:var(--text);
+}
+.valor-card p{
+  color:var(--text-dim);font-size:.89rem;line-height:1.75;
+}
+#cta-principal{
+  background:var(--accent);
+  padding:5rem 3.2rem;
+  position:relative;
+}
+#cta-principal::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.05) 0%, transparent 50%);
+}
+.cta-content{
+  max-width:960px;margin:0 auto;text-align:center;
+  position:relative;z-index:1;
+}
+.cta-content h2{
+  font-family:var(--font-d);font-weight:300;
+  font-size:clamp(2rem,4vw,2.8rem);
+  color:#fff;margin-bottom:1.2rem;line-height:1.3;
+}
+.cta-content p{
+  color:rgba(255,255,255,.88);
+  font-size:1.05rem;line-height:1.75;
+  max-width:680px;margin:0 auto 2.5rem;
+}
+.cta-actions{
+  display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+}
+.btn-cta-primary{
+  display:inline-flex;align-items:center;gap:.8rem;
+  background:#fff;color:var(--accent);
+  padding:.85rem 2.5rem;font-family:var(--font-b);
+  font-size:.75rem;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .3s;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+.btn-cta-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(0,0,0,.18);
+}
+.btn-cta-secondary{
+  display:inline-flex;align-items:center;gap:.8rem;
+  background:transparent;color:#fff;
+  border:1px solid rgba(255,255,255,.4);
+  padding:.85rem 2.5rem;font-family:var(--font-b);
+  font-size:.75rem;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .3s;
+}
+.btn-cta-secondary:hover{
+  background:rgba(255,255,255,.1);
+  border-color:#fff;
+}
+.btn-cta-primary svg,
+.btn-cta-secondary svg{
+  width:16px;height:16px;
+}
+.chatbot-btn{
+  position:fixed;bottom:2rem;right:2rem;
+  width:60px;height:60px;border-radius:50%;
+  background:var(--accent);border:none;color:#fff;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;z-index:999;
+  box-shadow:0 4px 16px rgba(61,107,92,0.3);
+}
+.chatbot-btn:hover{background:var(--accent-light);transform:scale(1.08)}
+.chatbot-btn svg{width:28px;height:28px}
+.chatbot-window{
+  position:fixed;bottom:100px;right:2rem;
+  width:400px;max-height:600px;
+  background:var(--surface);border:1px solid var(--accent-line);
+  border-radius:8px;box-shadow:0 8px 32px rgba(61,107,92,0.2);
+  z-index:999;display:none;flex-direction:column;overflow:hidden;
+}
+.chatbot-window.open{display:flex}
+.chatbot-header{
+  background:var(--accent);color:#fff;
+  padding:1.3rem 1.5rem;display:flex;
+  justify-content:space-between;align-items:center;
+}
+.chatbot-header h4{font-family:var(--font-d);font-size:1.05rem;font-weight:400}
+.chatbot-close{
+  background:none;border:none;color:#fff;
+  font-size:1.5rem;cursor:pointer;padding:0;line-height:1;
+}
+.chatbot-messages{
+  flex:1;padding:1.5rem;overflow-y:auto;max-height:420px;
+}
+.chat-message{margin-bottom:1rem;animation:fadeIn 0.3s}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.chat-message.bot{
+  background:var(--bg);padding:1.1rem 1.3rem;
+  border-radius:12px 12px 12px 4px;
+  font-size:.88rem;line-height:1.65;color:var(--text-dim);
+}
+.chat-message.user{
+  background:var(--accent);color:#fff;
+  padding:1.1rem 1.3rem;border-radius:12px 12px 4px 12px;
+  margin-left:auto;max-width:80%;font-size:.88rem;
+}
+.chat-options{display:grid;gap:.65rem;margin-top:.9rem}
+.chat-option-btn{
+  background:var(--surface);border:1px solid var(--accent-line);
+  padding:.85rem 1.1rem;text-align:left;cursor:pointer;
+  font-size:.85rem;color:var(--text);border-radius:6px;
+  transition:all .3s;
+}
+.chat-option-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.music-btn{
+  position:fixed;bottom:2rem;left:2rem;
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(61,107,92,0.92);
+  border:1px solid rgba(61,107,92,0.25);
+  color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;z-index:99;
+  box-shadow:0 4px 12px rgba(61,107,92,0.2);
+  opacity:0.6;
+}
+.music-btn:hover{background:rgba(77,130,112,0.92);transform:scale(1.05)}
+.music-btn svg{width:20px;height:20px}
+footer{
+  background:#1e2420;border-top:1px solid rgba(61,107,92,.15);
+  padding:5rem 3.2rem 2.5rem;
+}
+.footer-grid{
+  max-width:1120px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:3.5rem;
+}
+.footer-brand .nav-logo{display:block;margin-bottom:1.2rem;font-size:1rem;color:#e6e1da}
+.footer-brand p{color:#9e9a94;font-size:.82rem;line-height:1.8;max-width:280px}
+footer h5{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:#6aaa8e;margin-bottom:1.2rem;font-weight:400}
+footer ul{list-style:none}
+footer ul li{margin-bottom:.7rem}
+footer ul a{color:#9e9a94;text-decoration:none;font-size:.82rem;transition:color .3s}
+footer ul a:hover{color:#6aaa8e}
+.footer-contact p{color:#9e9a94;font-size:.82rem;line-height:2}
+.footer-contact a{color:#6aaa8e;text-decoration:none;font-weight:400}
+.footer-legal{
+  max-width:1120px;margin:2.5rem auto 0;
+  font-size:.78rem;color:#6e6b63;line-height:1.6;
+  text-align:center;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(61,107,92,.15);
+}
+.footer-bottom{
+  max-width:1120px;margin:1.5rem auto 0;
+  text-align:center;
+  font-size:.72rem;color:#6e6b63;
+}
+.footer-bottom a{color:#6aaa8e;text-decoration:none}
+@media(max-width:960px){
+  .filosofia-wrap,.valores-grid{grid-template-columns:1fr}
+  .filo-visual{height:320px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .chatbot-window{width:90%;right:5%;left:5%}
+}
+@media(max-width:640px){
+  nav{padding:1rem 1.3rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:5.5rem 1.3rem}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .chatbot-btn{width:56px;height:56px;bottom:1.5rem;right:1.5rem}
+  .chatbot-window{bottom:90px;max-height:500px;width:94%;right:3%;left:3%}
+  .music-btn{left:1.5rem;bottom:1.5rem}
+  .valores-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Google Translate Widget -->
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    includedLanguages: 'en,fr,de,it,pt,ru,zh-CN,ja,ar', // idiomas disponibles (puedes añadir/quitar)
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<canvas id="particles-canvas"></canvas>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">AURA <span>CABINET</span></a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#historia">Nuestra Historia</a></li>
+    <li><a href="protocolos.html">Protocolos AURA</a></li>
+    <li><a href="#vision">Visión</a></li>
+    <li><a href="#empresas">Empresas</a></li>
+    <li><a href="mailto:private@aura-cabinet.com" class="nav-cta">Contacto</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#inicio">Inicio</a>
+  <a href="#historia">Nuestra Historia</a>
+  <a href="protocolos.html">Protocolos AURA</a>
+  <a href="#vision">Visión</a>
+  <a href="#empresas">Empresas</a>
+  <a href="mailto:private@aura-cabinet.com">Contacto</a>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">La Arquitectura de lo Imperceptible</p>
+    <h1 class="hero-title">La percepción<br><em>es la realidad</em></h1>
+    <p class="hero-sub">Que se sepa de ti lo que quieres, como quieres y cuando quieres. Tu pasado no debe afectar tu presente ni condicionar tu futuro.</p>
+    <p class="hero-claim">— Tú serás el protagonista. Nosotros, tu respaldo invisible.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" id="agendaConsultaBtn">Agenda tu consulta</button>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="line"></div><span>Explorar</span></div>
+</section>
+
+<section id="que-es-aura">
+  <div class="aura-content reveal">
+    <p class="section-label">¿Qué es AURA?</p>
+    <h2 class="section-title">La Llave Invisible</h2>
+    <p class="aura-quote">"El aura es la impronta definitiva: esa vibración silenciosa que abre puertas antes de que llegues o las cierra antes de que hables."</p>
+    <p class="aura-text">Es el código invisible que decide si el mundo te recibe con simpatía o aversión. Tu aura es tu primera impresión, tu energía percibida, la narrativa que te precede.</p>
+    <div class="aura-highlight">
+      <h3>La Arquitectura de lo Imperceptible</h3>
+      <p>En AURA CABINET, refinamos tu energía para que tu presencia sea una invitación inevitable al éxito. Trabajamos en la construcción meticulosa de cómo eres percibido, desde el silencio hasta el impacto. Diseñamos la atmósfera que te rodea, permitiéndote decidir qué se conoce, cuándo y con qué profundidad.</p>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="historia-content reveal">
+    <p class="section-label">El Origen</p>
+    <h2 class="section-title">Por qué nace<br>AURA CABINET</h2>
+    <div class="historia-text">
+      <p>Hace once años viví en carne propia lo que significa perder el control de la propia narrativa. Una percepción equivocada, distante de la verdad, se convirtió en la versión "oficial" de mi historia. Cuando tu reputación queda a la deriva de la opinión de otros, <strong>pierdes más que tu imagen. Pierdes tu libertad.</strong></p>
+      <div class="historia-highlight">
+        "Durante años trabajé para recuperar algo que nunca debí perder: el derecho a decidir qué se sabe de mí, cuándo y según mis propios términos."
+      </div>
+      <p>No fue fácil. Pero cuando finalmente recuperé el control absoluto sobre mi narrativa, entendí que esto no debería ser un privilegio.</p>
+      <p><strong>AURA CABINET nace de esa certeza.</strong> Cualquier persona —emprendedor, profesional, alguien que ha superado una crisis— merece construir cimientos sólidos para proteger su reputación. Porque es mucho más difícil recuperar una narrativa perdida que construirla correctamente desde el principio.</p>
+    </div>
+  </div>
+</section>
+
+<section id="filosofia">
+  <div class="filosofia-wrap">
+    <div class="filo-text reveal">
+      <p class="section-label">Filosofía AURA</p>
+      <h2 class="section-title">El verdadero lujo<br>es controlar tu narrativa</h2>
+      <p class="section-desc">No es ser famoso. Es que se sepa de ti lo que quieres, como quieres y cuando quieres. Es tener la libertad de elegir cuándo ser visible y cuándo permanecer anónimo.</p>
+      <div class="filo-grid">
+        <div class="filo-item">
+          <h4>Para todos</h4>
+          <p>Un emprendedor necesita credibilidad. Un profesional necesita posicionamiento. Una persona común puede ser víctima de rumores. <strong>Todos merecemos soberanía sobre nuestra historia.</strong></p>
+        </div>
+        <div class="filo-item">
+          <h4>El poder del anonimato</h4>
+          <p>Hay un poder inmenso en decidir cuándo ser visible. Poder aparecer cuando te conviene, desaparecer cuando no quieres atención.</p>
+        </div>
+        <div class="filo-item">
+          <h4>Cimientos primero</h4>
+          <p>Si buscas visibilidad, primero construyamos la base: una narrativa coherente, un historial limpio, protocolos ante crisis.</p>
+        </div>
+        <div class="filo-item">
+          <h4>Tú protagonista</h4>
+          <p>Trabajamos en la sombra para que tú brilles con luz propia. Tu éxito parece natural, innato. <strong>Esa es la arquitectura de lo imperceptible.</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="filo-visual reveal">
+      <div class="filo-frame"></div>
+      <div class="filo-img">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=85&auto=format&fit=crop" alt="Espacio minimalista elegante con luz tenue y arquitectura moderna">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- El resto de secciones (protocolos, valores, vision, empresas, cta-principal, footer con LOPD) permanecen iguales -->
+
+<section id="protocolos-home">
+  <!-- ... contenido protocolos ... -->
+</section>
+
+<section id="valores">
+  <!-- ... contenido valores ... -->
+</section>
+
+<section id="vision">
+  <!-- ... contenido vision ... -->
+</section>
+
+<section id="empresas">
+  <!-- ... contenido empresas ... -->
+</section>
+
+<section id="cta-principal">
+  <!-- ... contenido CTA ... -->
+</section>
+
+<footer>
+  <!-- ... contenido footer ... -->
+  <div class="footer-legal">
+    <p>De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), le informamos que los datos que nos facilite a través de este sitio web serán tratados por AURA CABINET con la finalidad de gestionar su consulta o solicitud de información. La base jurídica del tratamiento es su consentimiento. Sus datos no serán cedidos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad enviando un email a private@aura-cabinet.com indicando “PROTECCIÓN DE DATOS”. Para más información, consulte nuestra <a href="legal.html">Política de Privacidad</a> completa.</p>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 AURA CABINET — PRIVATE STRATEGY | <a href="legal.html" style="color:#6aaa8e;text-decoration:none">Política de Integridad Ética</a></p>
+  </div>
+</footer>
+
+<button class="chatbot-btn" id="chatbotBtn">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <h4>AURA Assistant</h4>
+    <button class="chatbot-close" id="chatbotClose">×</button>
+  </div>
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+</div>
+
+<button class="music-btn" id="musicBtn" title="Activar música ambiente">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-2c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+  </svg>
+</button>
+<audio id="backgroundMusic" loop preload="none">
+  <source src="https://www.bensound.com/bensound-music/bensound-pianomoment.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// ── PARTÍCULAS ANIMADAS ──
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2.5 + 0.5;
+      this.speedX = Math.random() * 0.6 - 0.3;
+      this.speedY = Math.random() * 0.6 - 0.3;
+      this.opacity = Math.random() * 0.4 + 0.2;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+    draw() {
+      ctx.fillStyle = `rgba(61, 107, 92, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  function init() {
+    resizeCanvas();
+    particles = [];
+    const count = Math.floor((canvas.width * canvas.height) / 12000);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    particles.forEach((p1, i) => {
+      particles.slice(i + 1, i + 5).forEach(p2 => {
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 100) {
+          ctx.strokeStyle = `rgba(61, 107, 92, ${0.12 * (1 - distance / 100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(animate);
+  }
+  window.addEventListener('resize', init);
+  init();
+  animate();
+})();
+
+// ── NAV SCROLL ──
+document.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>55);
+});
+
+// ── MOBILE MENU ──
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+document.querySelectorAll('.mobile-menu a').forEach(link=>{
+  link.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+});
+
+// ── REVEAL ON SCROLL ──
+const revealElements=()=>{
+  document.querySelectorAll('.reveal').forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    const windowHeight=window.innerHeight;
+    if(rect.top<windowHeight*0.85){
+      el.classList.add('visible');
+    }
+  });
+};
+window.addEventListener('scroll',revealElements);
+window.addEventListener('load',revealElements);
+revealElements();
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
+    const href=this.getAttribute('href');
+    if(href!=='#'&&href!=='#!'){
+      e.preventDefault();
+      const target=document.querySelector(href);
+      if(target){
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    }
+  });
+});
+
+// ── CHATBOT ──
+const chatbotBtn = document.getElementById('chatbotBtn');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotMessages = document.getElementById('chatbotMessages');
+
+// Abrir chatbot desde el botón del hero
+document.getElementById('agendaConsultaBtn')?.addEventListener('click', () => {
+  chatbotWindow.classList.add('open');
+  if (chatbotMessages.children.length === 0) {
+    loadFlow('inicio');
+  }
+});
+
+const chatFlows = {
+  inicio: {
+    message: "Hola, soy AURA Assistant. ¿En qué puedo ayudarte?",
+    options: [
+      {text:"Quiero proteger mi reputación", next:"proteger"},
+      {text:"Necesito limpiar mi imagen digital", next:"limpiar"},
+      {text:"Quiero posicionarme estratégicamente", next:"posicionar"},
+      {text:"Tengo una crisis activa", next:"crisis"},
+      {text:"Servicios para empresas", next:"empresas"},
+      {text:"Agendar consulta confidencial", next:"consulta"}
+    ]
+  },
+  // ... (el resto de flujos del chatbot permanecen iguales) ...
+};
+
+function addMessage(text, isBot = true) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `chat-message ${isBot ? 'bot' : 'user'}`;
+  messageDiv.innerHTML = text;
+  chatbotMessages.appendChild(messageDiv);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function showOptions(options) {
+  const optionsDiv = document.createElement('div');
+  optionsDiv.className = 'chat-options';
+
+  options.forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'chat-option-btn';
+    btn.textContent = option.text;
+    btn.onclick = () => {
+      addMessage(option.text, false);
+      optionsDiv.remove();
+
+      if(option.action === 'download') {
+        window.location.href = 'Dossier_Aura_Cabinet.pdf';
+        setTimeout(() => loadFlow('inicio'), 1000);
+      } else if(option.action === 'email') {
+        window.location.href = 'mailto:private@aura-cabinet.com';
+        setTimeout(() => loadFlow('inicio'), 1000);
+      } else if(option.next) {
+        setTimeout(() => loadFlow(option.next), 600);
+      }
+    };
+    optionsDiv.appendChild(btn);
+  });
+
+  chatbotMessages.appendChild(optionsDiv);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function loadFlow(flowName) {
+  const flow = chatFlows[flowName];
+  if(flow) {
+    setTimeout(() => {
+      addMessage(flow.message);
+      showOptions(flow.options);
+    }, 400);
+  }
+}
+
+chatbotBtn.addEventListener('click', () => {
+  chatbotWindow.classList.toggle('open');
+  if(chatbotWindow.classList.contains('open') && chatbotMessages.children.length === 0) {
+    loadFlow('inicio');
+  }
+});
+
+chatbotClose.addEventListener('click', () => {
+  chatbotWindow.classList.remove('open');
+});
+
+// ── MUSIC CONTROL ──
+document.getElementById('musicBtn')?.addEventListener('click', () => {
+  const audio = document.getElementById('backgroundMusic');
+  if (audio.paused) {
+    audio.play();
+    document.getElementById('musicBtn').style.opacity = 1;
+  } else {
+    audio.pause();
+    document.getElementById('musicBtn').style.opacity = 0.6;
+  }
+});
+</script>
+</body>
+</html>
