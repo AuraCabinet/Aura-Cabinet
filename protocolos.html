@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Protocolos AURA | AURA CABINET</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f2ed;--bg-up:#eae6e0;--surface:#ffffff;--accent:#3d6b5c;--accent-light:#4d8270;
+  --text:#1e1e1c;--text-dim:#5a574f;--text-low:#8a8680;
+  --font-d:'Playfair Display',Georgia,serif;--font-b:'Outfit',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7;padding:0}
+
+/* Nav simple */
+.nav-simple{
+  background:rgba(245,242,237,.94);backdrop-filter:blur(18px);
+  padding:1.5rem 3rem;border-bottom:1px solid rgba(61,107,92,.15);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.nav-logo{font-family:var(--font-d);font-weight:300;font-size:1.1rem;letter-spacing:.42em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.back-link{color:var(--accent);text-decoration:none;font-size:.85rem;transition:opacity .3s}
+.back-link:hover{opacity:.7}
+
+/* Hero */
+.hero-proto{
+  background:linear-gradient(135deg,rgba(61,107,92,.05) 0%,transparent 50%);
+  padding:6rem 3rem 4rem;text-align:center;
+}
+.hero-proto h1{font-family:var(--font-d);font-weight:300;font-size:clamp(2.5rem,5vw,3.8rem);margin-bottom:1rem;line-height:1.2}
+.hero-proto p{color:var(--text-dim);font-size:1.08rem;max-width:720px;margin:0 auto 3rem;line-height:1.8}
+
+/* Servicios */
+.servicios-wrap{max-width:1200px;margin:0 auto;padding:4rem 3rem 6rem}
+.servicio{
+  background:var(--surface);border:1px solid rgba(61,107,92,.08);
+  padding:3.5rem 3rem;margin-bottom:3rem;
+  box-shadow:0 2px 16px rgba(61,107,92,.06);
+  transition:transform .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.servicio::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent);opacity:0;transition:opacity .4s;
+}
+.servicio:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(61,107,92,.12)}
+.servicio:hover::before{opacity:1}
+.servicio-num{
+  font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--accent);font-weight:400;margin-bottom:.8rem;
+}
+.servicio h2{
+  font-family:var(--font-d);font-weight:500;font-size:2rem;
+  color:var(--text);margin-bottom:1.5rem;
+}
+.servicio p{color:var(--text-dim);font-size:.96rem;line-height:1.85;margin-bottom:1.2rem}
+.servicio strong{color:var(--accent);font-weight:500}
+.ideal{
+  background:rgba(61,107,92,.06);padding:1.5rem;
+  border-left:2px solid var(--accent);margin-top:1.5rem;
+}
+.ideal strong{display:block;margin-bottom:.5rem;color:var(--text)}
+.objetivo{
+  margin-top:1.5rem;padding-top:1.5rem;
+  border-top:1px solid rgba(61,107,92,.15);
+  font-style:italic;color:var(--accent);font-size:1rem;
+}
+
+/* CTA */
+.cta-proto{
+  background:var(--accent);padding:4rem 3rem;text-align:center;color:#fff;
+}
+.cta-proto h2{font-family:var(--font-d);font-weight:300;font-size:2.2rem;margin-bottom:1rem}
+.cta-proto p{margin-bottom:2rem;font-size:1.05rem;opacity:.9}
+.cta-buttons{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:.85rem 2rem;font-family:var(--font-b);
+  font-size:.75rem;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .3s;
+}
+.btn-primary{background:#fff;color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn svg{width:16px;height:16px}
+
+/* Footer */
+footer{background:#1e2420;padding:3rem;text-align:center;color:#9e9a94;font-size:.82rem}
+footer a{color:#6aaa8e;text-decoration:none}
+
+@media(max-width:640px){
+  .nav-simple,.hero-proto,.servicios-wrap,.cta-proto{padding-left:1.5rem;padding-right:1.5rem}
+  .servicio{padding:2.5rem 2rem}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav-simple">
+  <a href="index.html" class="nav-logo">AURA <span>CABINET</span></a>
+  <a href="index.html" class="back-link">← Volver al inicio</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero-proto">
+  <h1>Protocolos AURA</h1>
+  <p>Nuestros servicios están diseñados como itinerarios de transformación. Cada nivel está pensado para un perfil específico de cliente, desde el diagnóstico inicial hasta la gestión integral 360º.</p>
+</section>
+
+<!-- Servicios -->
+<div class="servicios-wrap">
+  
+  <!-- 01 CLARITY -->
+  <article class="servicio">
+    <div class="servicio-num">01</div>
+    <h2>AURA Clarity</h2>
+    <p>Nuestra puerta de entrada. Un servicio de <strong>diagnóstico profundo</strong> donde analizamos la percepción actual de tu marca frente a tus objetivos de mercado. Definimos la hoja de ruta estratégica y los puntos de fuga de autoridad que están limitando tu crecimiento.</p>
+    
+    <div class="ideal">
+      <strong>Ideal para:</strong>
+      Líderes que necesitan un cambio de rumbo inmediato. Emprendedores que sienten que su imagen no refleja su potencial. Profesionales en transición que requieren claridad estratégica.
+    </div>
+    
+    <div class="objetivo">
+      → Resultado: Un mapa claro de dónde estás, dónde quieres estar, y el camino exacto para llegar.
+    </div>
+  </article>
+
+  <!-- 02 NARRATIVE -->
+  <article class="servicio">
+    <div class="servicio-num">02</div>
+    <h2>AURA Narrative</h2>
+    <p><strong>La palabra como herramienta de inversión.</strong> Creamos el ecosistema de textos que tu empresa necesita para proyectar solvencia: desde la arquitectura de tu web y perfiles de LinkedIn de alto impacto, hasta discursos y manifiestos de marca.</p>
+    
+    <p>Cada palabra está calibrada para generar confianza. Cada mensaje está diseñado para abrir puertas. No escribimos contenido; construimos credibilidad.</p>
+    
+    <div class="ideal">
+      <strong>Ideal para:</strong>
+      Empresas que necesitan credibilidad inmediata ante inversores o clientes. Profesionales que quieren ser percibidos como autoridades en su sector. Marcas que requieren coherencia narrativa en todos sus canales.
+    </div>
+    
+    <div class="objetivo">
+      → Objetivo: Convertir la lectura en confianza y la confianza en ventas.
+    </div>
+  </article>
+
+  <!-- 03 PRESENCE -->
+  <article class="servicio">
+    <div class="servicio-num">03</div>
+    <h2>AURA Presence</h2>
+    <p>El servicio de <strong>expansión estratégica.</strong> Aquí gestionamos tu voz ante el mundo a través de Relaciones Públicas Estratégicas y la aparición en medios de comunicación de prestigio. Colocamos tu marca en los lugares donde se encuentra el capital y la influencia.</p>
+    
+    <p>No se trata de aparecer en cualquier sitio. Se trata de aparecer en los sitios correctos, en el momento correcto, con el mensaje correcto. Convertimos la atención en oportunidades.</p>
+    
+    <div class="ideal">
+      <strong>Ideal para:</strong>
+      Marcas que buscan amplificar su alcance sin perder sofisticación. Líderes que necesitan posicionamiento público en su industria. Empresas lanzando productos o servicios que requieren validación mediática.
+    </div>
+    
+    <div class="objetivo">
+      → Objetivo: Posicionamiento y reconocimiento público en círculos de decisión.
+    </div>
+  </article>
+
+  <!-- 04 ELITE -->
+  <article class="servicio">
+    <div class="servicio-num">04</div>
+    <h2>AURA Elite</h2>
+    <p>Nuestra <strong>gestión integral 360º.</strong> Nos convertimos en tu dirección externa de comunicación y relaciones públicas. Incluye la organización de eventos de autor, gestión de crisis, alianzas estratégicas y el blindaje total de tu imagen empresarial.</p>
+    
+    <p>Te preparamos para que te posiciones en los círculos correctos: las personas, eventos y plataformas donde se toman las decisiones que te importan. No se trata de ser famoso, sino de ser conocido por las personas correctas. Una recomendación de la persona adecuada vale más que mil seguidores.</p>
+    
+    <p>Este es el nivel donde AURA opera como tu <strong>gabinete invisible</strong>. Tú serás el protagonista visible; nosotros, la arquitectura imperceptible que sostiene cada decisión, cada aparición, cada silencio estratégico.</p>
+    
+    <div class="ideal">
+      <strong>Ideal para:</strong>
+      CEOs y fundadores que requieren gestión continua de su imagen pública. Marcas consolidadas que buscan mantener su reputación intacta. Líderes en sectores sensibles donde la percepción es crítica para el negocio.
+    </div>
+    
+    <div class="objetivo">
+      → Objetivo: Soberanía reputacional total. Control absoluto sobre tu narrativa en cualquier escenario.
+    </div>
+  </article>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-proto">
+  <h2>¿Listo para el siguiente nivel?</h2>
+  <p>Agenda una consulta confidencial para determinar qué protocolo AURA se adapta mejor a tus necesidades.</p>
+  <div class="cta-buttons">
+    <a href="mailto:private@auracabinet.com" class="btn btn-primary">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      private@auracabinet.com
+    </a>
+    <a href="index.html#cta-principal" class="btn btn-secondary">
+      Volver al inicio
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 AURA CABINET — PRIVATE STRATEGY | <a href="legal.html">Política de Integridad Ética</a></p>
+</footer>
+
+</body>
+</html>
