@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vaciado Estratégico | AURA CABINET</title>
+<meta name="description" content="Elimina contenido obsoleto y crea un lienzo limpio digital. Gestión de derecho al olvido."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f2ed;--surface:#ffffff;--accent:#3d6b5c;--accent-light:#4d8270;
+  --text:#1e1e1c;--text-dim:#5a574f;--text-low:#8a8680;
+  --font-d:'Playfair Display',Georgia,serif;--font-b:'Outfit',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7;overflow-x:hidden}
+#particles-canvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:998;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.065;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:particleFlow 25s linear infinite;
+}
+@keyframes particleFlow{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-10%)}
+}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3.2rem;background:rgba(245,242,237,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(61,107,92,.15)}
+.nav-logo{font-family:var(--font-d);font-weight:300;font-size:1.15rem;letter-spacing:.42em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.back-link{color:var(--accent);text-decoration:none;font-size:.88rem;transition:opacity .3s}
+.back-link:hover{opacity:.7}
+.hero-service{padding:10rem 3.2rem 6rem;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,var(--surface) 100%)}
+.hero-service h1{font-family:var(--font-d);font-weight:300;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1.5rem;color:var(--text)}
+.hero-service p{font-size:1.2rem;color:var(--text-dim);max-width:720px;margin:0 auto}
+.content-section{max-width:920px;margin:0 auto;padding:4rem 2rem}
+.content-section h2{font-family:var(--font-d);font-weight:500;font-size:2rem;margin:3rem 0 1.5rem;color:var(--accent)}
+.content-section h3{font-family:var(--font-d);font-weight:500;font-size:1.5rem;margin:2.5rem 0 1rem;color:var(--text)}
+.content-section p{color:var(--text-dim);font-size:1rem;line-height:1.85;margin-bottom:1.5rem}
+.content-section ul{margin:1.5rem 0 2rem 2rem;color:var(--text-dim)}
+.content-section li{margin-bottom:.8rem;line-height:1.8}
+.highlight-box{background:rgba(61,107,92,.06);padding:2rem;border-left:3px solid var(--accent);margin:2rem 0}
+.cta-final{text-align:center;padding:5rem 2rem;background:var(--bg)}
+.cta-final h2{font-family:var(--font-d);font-weight:400;font-size:2rem;margin-bottom:1.5rem;color:var(--text)}
+.btn-cta{display:inline-block;padding:1rem 2.5rem;background:var(--accent);color:#fff;text-decoration:none;font-size:.9rem;letter-spacing:.1em;transition:.3s;border:none}
+.btn-cta:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(61,107,92,.2)}
+.service-image{width:100%;max-width:800px;height:400px;margin:3rem auto;border-radius:6px;overflow:hidden;box-shadow:0 8px 40px rgba(61,107,92,.12)}
+.service-image img{width:100%;height:100%;object-fit:cover}
+footer{background:var(--text);color:#fff;padding:3rem 2rem 2rem;text-align:center}
+footer a{color:var(--accent-light);text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .hero-service{padding:8rem 1.5rem 4rem}
+  .content-section{padding:3rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<nav>
+  <a href="index.html" class="nav-logo">AURA <span>CABINET</span></a>
+  <a href="index.html" class="back-link">← Volver al inicio</a>
+</nav>
+
+<section class="hero-service">
+  <h1>Vaciado Estratégico</h1>
+  <p>Elimina contenido obsoleto y crea un lienzo limpio digital</p>
+</section>
+
+<div class="service-image">
+  <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80" alt="Limpieza digital estratégica">
+</div>
+
+<section class="content-section">
+  
+  <h2>¿Qué es el Vaciado Estratégico?</h2>
+  <p>Tu pasado no debe condicionar tu futuro. El Vaciado Estratégico es el proceso de eliminar, minimizar o desindexar contenido online que ya no te representa o que perjudica tu reputación actual.</p>
+
+  <h2>¿Para quién es este servicio?</h2>
+  <ul>
+    <li>Personas con contenido obsoleto que aparece en Google</li>
+    <li>Profesionales afectados por información desactualizada</li>
+    <li>Quienes necesitan aplicar el derecho al olvido</li>
+    <li>Emprendedores que quieren un historial digital limpio antes de escalar</li>
+  </ul>
+
+  <h2>¿Qué incluye?</h2>
+  <ul>
+    <li><strong>Identificación de contenido obsoleto</strong> - Localizamos información perjudicial o desactualizada</li>
+    <li><strong>Gestión de derecho al olvido</strong> - Procedimientos legales cuando corresponde</li>
+    <li><strong>Desindexación estratégica</strong> - Retiramos contenido de resultados de búsqueda</li>
+    <li><strong>Creación de lienzo limpio</strong> - Preparamos tu reputación digital para reconstrucción</li>
+  </ul>
+
+  <h2>El proceso</h2>
+  <div class="highlight-box">
+    <p><strong>1. Análisis de contenido perjudicial</strong> - Identificamos qué debe eliminarse</p>
+    <p><strong>2. Estrategia legal y técnica</strong> - Definimos el enfoque más efectivo</p>
+    <p><strong>3. Ejecución del vaciado</strong> - Implementamos las acciones necesarias</p>
+    <p><strong>4. Verificación de resultados</strong> - Confirmamos la eliminación efectiva</p>
+  </div>
+
+  <h3>Importante</h3>
+  <p>Trabajamos dentro del marco legal vigente (RGPD, LOPDGDD) y respetamos los derechos de información pública cuando corresponde.</p>
+
+</section>
+
+<section class="cta-final">
+  <h2>¿Listo para tomar el control?</h2>
+  <a href="mailto:private@aura-cabinet.com?subject=Consulta: Vaciado Estratégico" class="btn-cta">Agenda consulta confidencial</a>
+</section>
+
+<footer>
+  <p>© 2026 AURA CABINET — PRIVATE STRATEGY</p>
+  <p><a href="mailto:private@aura-cabinet.com">private@aura-cabinet.com</a> | <a href="legal.html">Política de Integridad Ética</a></p>
+</footer>
+
+<script>
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2.5 + 0.5;
+      this.speedX = Math.random() * 0.6 - 0.3;
+      this.speedY = Math.random() * 0.6 - 0.3;
+      this.opacity = Math.random() * 0.4 + 0.2;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+    draw() {
+      ctx.fillStyle = `rgba(61, 107, 92, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  function init() {
+    resizeCanvas();
+    particles = [];
+    const count = Math.floor((canvas.width * canvas.height) / 12000);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    particles.forEach((p1, i) => {
+      particles.slice(i + 1, i + 5).forEach(p2 => {
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 100) {
+          ctx.strokeStyle = `rgba(61, 107, 92, ${0.12 * (1 - distance / 100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(animate);
+  }
+  window.addEventListener('resize', init);
+  init();
+  animate();
+})();
+</script>
+
+</body>
+</html>
