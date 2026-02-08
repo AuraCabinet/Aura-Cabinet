@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico AURA — Descubre tu Protocolo Ideal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    emailjs.init("b0zh_dXjgUI8CsMAE");
+  })();
+</script>
+<style>
+:root {
+  --bg: #f5f2ed;
+  --bg-up: #eae6e0;
+  --surface: #ffffff;
+  --accent: #3d6b5c;
+  --accent-light: #4d8270;
+  --accent-dim: rgba(61,107,92,.1);
+  --text: #1e1e1c;
+  --text-dim: #5a574f;
+  --text-low: #8a8680;
+  --font-d: 'Playfair Display', Georgia, serif;
+  --font-b: 'Outfit', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Partículas flotantes */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.065;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: particleFlow 25s linear infinite;
+}
+
+@keyframes particleFlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10%); }
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+}
+
+.logo {
+  font-family: var(--font-d);
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 0.42em;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.header h1 {
+  font-family: var(--font-d);
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.header p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* Progress Bar */
+.progress-container {
+  background: var(--bg-up);
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Question Card */
+.question-card {
+  background: var(--surface);
+  padding: 3rem 2.5rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(61, 107, 92, 0.08);
+  border: 1px solid rgba(61, 107, 92, 0.08);
+  margin-bottom: 2rem;
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.question-card.active {
+  display: block;
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.question-card h2 {
+  font-family: var(--font-d);
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.question-card p {
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  border: 1px solid rgba(61, 107, 92, 0.2);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 3px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.required {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.radio-option {
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-option .radio-custom {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  border: 2px solid rgba(61, 107, 92, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-custom {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.radio-option .radio-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-custom::after {
+  display: block;
+}
+
+.radio-option label {
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.checkbox-option {
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: flex-start;
+}
+
+.checkbox-option input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-option .checkbox-custom {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  height: 20px;
+  width: 20px;
+  border: 2px solid rgba(61, 107, 92, 0.3);
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-custom {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.checkbox-option .checkbox-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-custom::after {
+  display: block;
+}
+
+.checkbox-option label {
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Error Message */
+.error-message {
+  color: #c94b4b;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  justify-content: space-between;
+}
+
+button {
+  font-family: var(--font-b);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+  box-shadow: 0 4px 16px rgba(61, 107, 92, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  background: var(--text-low);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid rgba(61, 107, 92, 0.2);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner.show {
+  display: block;
+}
+
+.spinner {
+  border: 3px solid var(--accent-dim);
+  border-top: 3px solid var(--accent);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success/Error messages */
+.status-message {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.status-message.show {
+  display: block;
+}
+
+.status-message.success {
+  background: rgba(61, 107, 92, 0.1);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.status-message.error {
+  background: rgba(201, 75, 75, 0.1);
+  border: 1px solid #c94b4b;
+  color: #c94b4b;
+}
+
+/* Final Screen */
+.final-screen {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.final-screen .icon {
+  width: 80px;
+  height: 80px;
+  background: var(--accent-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.final-screen .icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+}
+
+.final-screen h2 {
+  font-family: var(--font-d);
+  font-weight: 300;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.final-screen p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+.final-screen .highlight {
+  background: var(--surface);
+  padding: 2rem;
+  border-left: 3px solid var(--accent);
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.final-screen .highlight strong {
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--text-low);
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .question-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .button-group {
+    flex-direction: column-reverse;
+  }
+  
+  button {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<div class="container">
+  <div class="header">
+    <a href="/" class="logo">AURA <span>CABINET</span></a>
+    <h1>Diagnóstico Reputacional</h1>
+    <p>En 5 minutos conoceremos tu situación y te diremos exactamente qué protocolo necesitas.</p>
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <form id="diagnosticForm">
+    
+    <!-- PASO 1: Bienvenida -->
+    <div class="question-card active" data-step="0">
+      <div class="step-label">Bienvenida</div>
+      <h2>Tu privacidad es nuestra prioridad</h2>
+      <p>Tus datos son estrictamente confidenciales. Solo los veremos nosotros y nunca los compartiremos con terceros.</p>
+      <div class="highlight" style="background: var(--accent-dim); padding: 1.5rem; border-radius: 3px; margin-top: 2rem;">
+        <strong style="color: var(--accent); display: block; margin-bottom: 0.5rem;">✓ Confidencialidad Total</strong>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Trabajamos con contratos de confidencialidad estrictos y garantizamos máxima reserva.</p>
+      </div>
+      <div class="button-group">
+        <div></div>
+        <button type="button" class="btn-primary" onclick="nextStep()">Comenzar Diagnóstico</button>
+      </div>
+    </div>
+
+    <!-- PASO 2: Identificación Básica -->
+    <div class="question-card" data-step="1">
+      <div class="step-label">Paso 1 de 8</div>
+      <h2>Empecemos con lo básico</h2>
+      <p>Necesitamos algunos datos para poder contactarte.</p>
+      
+      <div class="form-group">
+        <label>Nombre completo <span class="required">*</span></label>
+        <input type="text" id="nombre" name="nombre" required>
+        <div class="error-message" id="error-nombre">Por favor, introduce tu nombre completo</div>
+      </div>
+      
+      <div class="form-group">
+        <label>Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required>
+        <div class="error-message" id="error-email">Por favor, introduce un email válido</div>
+      </div>
+      
+      <div class="form-group">
+        <label>Teléfono (opcional)</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+34">
+      </div>
+      
+      <div class="form-group">
+        <label>Tipo de perfil <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="tipo-persona" name="tipo" value="persona" required>
+            <span class="radio-custom"></span>
+            <label for="tipo-persona">Persona física</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="tipo-empresa" name="tipo" value="empresa">
+            <span class="radio-custom"></span>
+            <label for="tipo-empresa">Empresa / Organización</label>
+          </div>
+        </div>
+        <div class="error-message" id="error-tipo">Por favor, selecciona una opción</div>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(1)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 3: Sector -->
+    <div class="question-card" data-step="2">
+      <div class="step-label">Paso 2 de 8</div>
+      <h2>¿En qué sector trabajas?</h2>
+      <p>Esto nos ayuda a entender el contexto de tu actividad profesional.</p>
+      
+      <div class="form-group">
+        <label>Sector / Industria <span class="required">*</span></label>
+        <select id="sector" name="sector" required>
+          <option value="">Selecciona tu sector...</option>
+          <option value="tecnologia">Tecnología / Startups</option>
+          <option value="consultoria">Consultoría</option>
+          <option value="finanzas">Finanzas / Banca</option>
+          <option value="legal">Legal / Abogacía</option>
+          <option value="medicina">Medicina / Salud</option>
+          <option value="educacion">Educación / Formación</option>
+          <option value="inmobiliario">Inmobiliario</option>
+          <option value="marketing">Marketing / Publicidad</option>
+          <option value="retail">Retail / Comercio</option>
+          <option value="hosteleria">Hostelería / Turismo</option>
+          <option value="construccion">Construcción / Ingeniería</option>
+          <option value="arte">Arte / Cultura / Entretenimiento</option>
+          <option value="deportes">Deportes / Fitness</option>
+          <option value="otro">Otro</option>
+        </select>
+        <div class="error-message" id="error-sector">Por favor, selecciona tu sector</div>
+      </div>
+      
+      <div class="form-group" id="sector-otro-group" style="display: none;">
+        <label>Especifica tu sector</label>
+        <input type="text" id="sector-otro" name="sector-otro" placeholder="Describe tu sector...">
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(2)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 4: Presencia Actual -->
+    <div class="question-card" data-step="3">
+      <div class="step-label">Paso 3 de 8</div>
+      <h2>¿Tienes presencia online actualmente?</h2>
+      <p>Queremos saber si ya tienes perfiles profesionales o web.</p>
+      
+      <div class="form-group">
+        <label>Presencia digital <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="presencia-si" name="presencia" value="si" required>
+            <span class="radio-custom"></span>
+            <label for="presencia-si">Sí, tengo perfiles/web</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="presencia-algo" name="presencia" value="algo">
+            <span class="radio-custom"></span>
+            <label for="presencia-algo">Algo, pero muy básico</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="presencia-no" name="presencia" value="no">
+            <span class="radio-custom"></span>
+            <label for="presencia-no">No, casi nada</label>
+          </div>
+        </div>
+        <div class="error-message" id="error-presencia">Por favor, selecciona una opción</div>
+      </div>
+      
+      <div class="form-group" id="url-group" style="display: none;">
+        <label>Tu URL principal (LinkedIn, web, etc.)</label>
+        <input type="url" id="url" name="url" placeholder="https://">
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(3)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 5: El Problema -->
+    <div class="question-card" data-step="4">
+      <div class="step-label">Paso 4 de 8</div>
+      <h2>¿Cuál es tu situación actual?</h2>
+      <p>Selecciona todas las opciones que describan tu situación.</p>
+      
+      <div class="form-group">
+        <label>Marca todas las que apliquen <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <div class="checkbox-option">
+            <input type="checkbox" id="sit1" name="situacion" value="nadie-conoce">
+            <span class="checkbox-custom"></span>
+            <label for="sit1">Nadie me conoce y necesito credibilidad</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="sit2" name="situacion" value="presencia-pobre">
+            <span class="checkbox-custom"></span>
+            <label for="sit2">Mi presencia online no refleja mi nivel profesional</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="sit3" name="situacion" value="info-desactualizada">
+            <span class="checkbox-custom"></span>
+            <label for="sit3">Hay información desactualizada o errónea sobre mí</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="sit4" name="situacion" value="crisis">
+            <span class="checkbox-custom"></span>
+            <label for="sit4">Estoy en una crisis reputacional activa</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="sit5" name="situacion" value="posicionamiento">
+            <span class="checkbox-custom"></span>
+            <label for="sit5">Quiero posicionarme como experto en mi campo</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="sit6" name="situacion" value="limpiar">
+            <span class="checkbox-custom"></span>
+            <label for="sit6">Necesito limpiar mi pasado digital</label>
+          </div>
+        </div>
+        <div class="error-message" id="error-situacion">Por favor, selecciona al menos una opción</div>
+      </div>
+      
+      <div class="form-group">
+        <label>¿Hay contenido negativo sobre ti online? <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="neg-si" name="negativo" value="si" required>
+            <span class="radio-custom"></span>
+            <label for="neg-si">Sí, hay contenido negativo</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="neg-no" name="negativo" value="no">
+            <span class="radio-custom"></span>
+            <label for="neg-no">No</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="neg-nosé" name="negativo" value="no-sé">
+            <span class="radio-custom"></span>
+            <label for="neg-nosé">No lo sé / No he buscado</label>
+          </div>
+        </div>
+        <div class="error-message" id="error-negativo">Por favor, selecciona una opción</div>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(4)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 6: Objetivos -->
+    <div class="question-card" data-step="5">
+      <div class="step-label">Paso 5 de 8</div>
+      <h2>¿Qué quieres conseguir?</h2>
+      <p>Selecciona tus objetivos principales.</p>
+      
+      <div class="form-group">
+        <label>Objetivos (marca todas las que apliquen) <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <div class="checkbox-option">
+            <input type="checkbox" id="obj1" name="objetivos" value="captar-clientes">
+            <span class="checkbox-custom"></span>
+            <label for="obj1">Captar clientes</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="obj2" name="objetivos" value="inversion">
+            <span class="checkbox-custom"></span>
+            <label for="obj2">Conseguir inversión</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="obj3" name="objetivos" value="trabajo">
+            <span class="checkbox-custom"></span>
+            <label for="obj3">Nuevo trabajo o ascenso</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="obj4" name="objetivos" value="reconocimiento">
+            <span class="checkbox-custom"></span>
+            <label for="obj4">Ser reconocido en mi sector</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="obj5" name="objetivos" value="proteccion">
+            <span class="checkbox-custom"></span>
+            <label for="obj5">Proteger mi reputación</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="obj6" name="objetivos" value="borrar">
+            <span class="checkbox-custom"></span>
+            <label for="obj6">Borrar contenido obsoleto</label>
+          </div>
+        </div>
+        <div class="error-message" id="error-objetivos">Por favor, selecciona al menos un objetivo</div>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(5)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 7: Urgencia y Presupuesto -->
+    <div class="question-card" data-step="6">
+      <div class="step-label">Paso 6 de 8</div>
+      <h2>Tiempos y presupuesto</h2>
+      <p>Esto nos ayuda a proponer la mejor solución para ti.</p>
+      
+      <div class="form-group">
+        <label>¿Cuándo necesitas resultados? <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="urg-ya" name="urgencia" value="urgente" required>
+            <span class="radio-custom"></span>
+            <label for="urg-ya">Urgente (crisis activa, necesito ayuda YA)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="urg-1m" name="urgencia" value="1mes">
+            <span class="radio-custom"></span>
+            <label for="urg-1m">1 mes</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="urg-3m" name="urgencia" value="3meses">
+            <span class="radio-custom"></span>
+            <label for="urg-3m">3 meses</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="urg-6m" name="urgencia" value="6meses">
+            <span class="radio-custom"></span>
+            <label for="urg-6m">6 meses o más</label>
+          </div>
+        </div>
+        <div class="error-message" id="error-urgencia">Por favor, selecciona una opción</div>
+      </div>
+      
+      <div class="form-group">
+        <label>Presupuesto aproximado</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="pres-bajo" name="presupuesto" value="<2000">
+            <span class="radio-custom"></span>
+            <label for="pres-bajo">< 2.000€ (consultoría básica)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="pres-medio" name="presupuesto" value="2000-5000">
+            <span class="radio-custom"></span>
+            <label for="pres-medio">2.000€ - 5.000€ (protocolo individual)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="pres-alto" name="presupuesto" value="5000-15000">
+            <span class="radio-custom"></span>
+            <label for="pres-alto">5.000€ - 15.000€ (protocolo combinado)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="pres-muy-alto" name="presupuesto" value=">15000">
+            <span class="radio-custom"></span>
+            <label for="pres-muy-alto">> 15.000€ (gestión 360º)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="pres-no" name="presupuesto" value="no-decir">
+            <span class="radio-custom"></span>
+            <label for="pres-no">Prefiero no decirlo ahora</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(6)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 8: Comentarios Finales -->
+    <div class="question-card" data-step="7">
+      <div class="step-label">Paso 7 de 8</div>
+      <h2>Última pregunta</h2>
+      <p>¿Hay algo más que debamos saber sobre tu caso?</p>
+      
+      <div class="form-group">
+        <label>Comentarios adicionales (opcional)</label>
+        <textarea id="comentarios" name="comentarios" placeholder="Cuéntanos cualquier detalle que consideres relevante..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>¿Cómo nos conociste?</label>
+        <select id="fuente" name="fuente">
+          <option value="">Selecciona una opción...</option>
+          <option value="google">Búsqueda en Google</option>
+          <option value="referido">Recomendación de alguien</option>
+          <option value="linkedin">LinkedIn</option>
+          <option value="instagram">Instagram</option>
+          <option value="twitter">Twitter/X</option>
+          <option value="articulo">Artículo o prensa</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-primary" onclick="validateAndNext(7)">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- PASO 9: Confirmación -->
+    <div class="question-card" data-step="8">
+      <div class="step-label">Paso 8 de 8</div>
+      <h2>Confirma y envía</h2>
+      <p>Revisa tus datos antes de enviar. Recibirás nuestra respuesta en las próximas 48 horas.</p>
+      
+      <div class="highlight" style="background: var(--surface); padding: 1.5rem; border-left: 3px solid var(--accent); margin: 2rem 0;">
+        <div style="margin-bottom: 1rem;">
+          <strong style="color: var(--accent); font-size: 0.85rem;">TU INFORMACIÓN:</strong>
+          <p id="resumen-datos" style="color: var(--text-dim); font-size: 0.9rem; margin-top: 0.5rem;"></p>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="checkbox-option">
+          <input type="checkbox" id="acepto" name="acepto" required>
+          <span class="checkbox-custom"></span>
+          <label for="acepto">Acepto que AURA CABINET contacte conmigo y procese mis datos según su <a href="/legal.html" style="color: var(--accent); text-decoration: underline;">Política de Privacidad</a> <span class="required">*</span></label>
+        </div>
+        <div class="error-message" id="error-acepto">Debes aceptar para continuar</div>
+      </div>
+      
+      <!-- Loading spinner -->
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Enviando tu diagnóstico...</p>
+      </div>
+      
+      <!-- Status messages -->
+      <div class="status-message success" id="successMessage">
+        ✓ ¡Diagnóstico enviado correctamente! Recibirás una respuesta en las próximas 48 horas.
+      </div>
+      
+      <div class="status-message error" id="errorMessage">
+        ✗ Ha ocurrido un error al enviar el diagnóstico. Por favor, inténtalo de nuevo o contacta con nosotros directamente.
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="prevStep()">Atrás</button>
+        <button type="submit" class="btn-primary" id="submitBtn">Enviar Diagnóstico</button>
+      </div>
+    </div>
+
+    <!-- Pantalla Final -->
+    <div class="question-card" data-step="9">
+      <div class="final-screen">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        
+        <h2>¡Diagnóstico recibido!</h2>
+        <p>Gracias <span id="nombre-final"></span>. Hemos recibido tu información y la estamos analizando.</p>
+        
+        <div class="highlight">
+          <strong>PRÓXIMOS PASOS:</strong>
+          <p style="color: var(--text-dim); margin-top: 0.5rem;">
+            ✓ Revisaremos tu caso personalmente<br>
+            ✓ Analizaremos tu situación actual<br>
+            ✓ Prepararemos tu protocolo recomendado
+          </p>
+        </div>
+        
+        <p style="margin-top: 2rem;">
+          <strong style="color: var(--accent);">Recibirás un email de <a href="mailto:private@aura-cabinet.com" style="color: var(--accent); text-decoration: underline;">private@aura-cabinet.com</a> en las próximas 48 horas</strong> con nuestro análisis y recomendación personalizada.
+        </p>
+        
+        <div id="urgencia-mensaje" style="display: none; background: rgba(201, 75, 75, 0.1); padding: 1.5rem; border-left: 3px solid #c94b4b; margin-top: 2rem; border-radius: 3px;">
+          <strong style="color: #c94b4b;">⚠️ ATENCIÓN PRIORITARIA</strong>
+          <p style="color: var(--text-dim); margin-top: 0.5rem;">Hemos detectado que tu caso requiere atención inmediata. Te contactaremos en las próximas 6 horas.</p>
+        </div>
+        
+        <a href="/" style="display: inline-block; margin-top: 2rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">← Volver al inicio</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="footer">
+  <p>© 2026 AURA CABINET — <a href="/legal.html">Política de Privacidad</a></p>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── PARTÍCULAS FLOTANTES ──
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.speedY = Math.random() * 0.5 - 0.25;
+      this.opacity = Math.random() * 0.3 + 0.1;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+    draw() {
+      ctx.fillStyle = `rgba(61, 107, 92, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  
+  function init() {
+    resizeCanvas();
+    particles = [];
+    const count = Math.floor((canvas.width * canvas.height) / 12000);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    particles.forEach((p1, i) => {
+      particles.slice(i + 1, i + 5).forEach(p2 => {
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 100) {
+          ctx.strokeStyle = `rgba(61, 107, 92, ${0.12 * (1 - distance / 100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(animate);
+  }
+  
+  window.addEventListener('resize', init);
+  init();
+  animate();
+})();
+
+// ── CUESTIONARIO ──
+let currentStep = 0;
+const totalSteps = 9;
+const formData = {};
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', () => {
+  updateProgress();
+  
+  // Mostrar campo "otro" cuando se selecciona
+  document.getElementById('sector').addEventListener('change', (e) => {
+    document.getElementById('sector-otro-group').style.display = 
+      e.target.value === 'otro' ? 'block' : 'none';
+  });
+  
+  // Mostrar URL cuando tiene presencia
+  document.querySelectorAll('input[name="presencia"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      document.getElementById('url-group').style.display = 
+        e.target.value === 'si' ? 'block' : 'none';
+    });
+  });
+});
+
+function nextStep() {
+  const cards = document.querySelectorAll('.question-card');
+  cards[currentStep].classList.remove('active');
+  currentStep++;
+  cards[currentStep].classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep() {
+  const cards = document.querySelectorAll('.question-card');
+  cards[currentStep].classList.remove('active');
+  currentStep--;
+  cards[currentStep].classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const progress = (currentStep / totalSteps) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+}
+
+function validateAndNext(step) {
+  let valid = true;
+  
+  // Validación según el paso
+  if (step === 1) {
+    // Validar nombre
+    const nombre = document.getElementById('nombre').value.trim();
+    if (!nombre) {
+      showError('nombre');
+      valid = false;
+    } else {
+      hideError('nombre');
+      formData.nombre = nombre;
+    }
+    
+    // Validar email
+    const email = document.getElementById('email').value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showError('email');
+      valid = false;
+    } else {
+      hideError('email');
+      formData.email = email;
+    }
+    
+    // Validar tipo
+    const tipo = document.querySelector('input[name="tipo"]:checked');
+    if (!tipo) {
+      showError('tipo');
+      valid = false;
+    } else {
+      hideError('tipo');
+      formData.tipo = tipo.value;
+    }
+    
+    // Guardar teléfono si existe
+    formData.telefono = document.getElementById('telefono').value.trim();
+  }
+  
+  if (step === 2) {
+    const sector = document.getElementById('sector').value;
+    if (!sector) {
+      showError('sector');
+      valid = false;
+    } else {
+      hideError('sector');
+      formData.sector = sector;
+      if (sector === 'otro') {
+        formData.sectorOtro = document.getElementById('sector-otro').value.trim();
+      }
+    }
+  }
+  
+  if (step === 3) {
+    const presencia = document.querySelector('input[name="presencia"]:checked');
+    if (!presencia) {
+      showError('presencia');
+      valid = false;
+    } else {
+      hideError('presencia');
+      formData.presencia = presencia.value;
+      if (presencia.value === 'si') {
+        formData.url = document.getElementById('url').value.trim();
+      }
+    }
+  }
+  
+  if (step === 4) {
+    // Validar situación (al menos una)
+    const situacion = document.querySelectorAll('input[name="situacion"]:checked');
+    if (situacion.length === 0) {
+      showError('situacion');
+      valid = false;
+    } else {
+      hideError('situacion');
+      formData.situacion = Array.from(situacion).map(s => s.value);
+    }
+    
+    // Validar contenido negativo
+    const negativo = document.querySelector('input[name="negativo"]:checked');
+    if (!negativo) {
+      showError('negativo');
+      valid = false;
+    } else {
+      hideError('negativo');
+      formData.negativo = negativo.value;
+    }
+  }
+  
+  if (step === 5) {
+    const objetivos = document.querySelectorAll('input[name="objetivos"]:checked');
+    if (objetivos.length === 0) {
+      showError('objetivos');
+      valid = false;
+    } else {
+      hideError('objetivos');
+      formData.objetivos = Array.from(objetivos).map(o => o.value);
+    }
+  }
+  
+  if (step === 6) {
+    const urgencia = document.querySelector('input[name="urgencia"]:checked');
+    if (!urgencia) {
+      showError('urgencia');
+      valid = false;
+    } else {
+      hideError('urgencia');
+      formData.urgencia = urgencia.value;
+    }
+    
+    const presupuesto = document.querySelector('input[name="presupuesto"]:checked');
+    formData.presupuesto = presupuesto ? presupuesto.value : 'no-especificado';
+  }
+  
+  if (step === 7) {
+    formData.comentarios = document.getElementById('comentarios').value.trim();
+    formData.fuente = document.getElementById('fuente').value;
+    
+    // Generar resumen
+    generarResumen();
+  }
+  
+  if (valid) {
+    nextStep();
+  }
+}
+
+function showError(fieldId) {
+  document.getElementById('error-' + fieldId).classList.add('show');
+  const field = document.getElementById(fieldId);
+  if (field) {
+    field.style.borderColor = '#c94b4b';
+  }
+}
+
+function hideError(fieldId) {
+  document.getElementById('error-' + fieldId).classList.remove('show');
+  const field = document.getElementById(fieldId);
+  if (field) {
+    field.style.borderColor = '';
+  }
+}
+
+function generarResumen() {
+  const resumen = `
+    <strong>Nombre:</strong> ${formData.nombre}<br>
+    <strong>Email:</strong> ${formData.email}<br>
+    <strong>Tipo:</strong> ${formData.tipo === 'persona' ? 'Persona física' : 'Empresa'}<br>
+    <strong>Sector:</strong> ${formData.sector}<br>
+    <strong>Urgencia:</strong> ${formData.urgencia}
+  `;
+  document.getElementById('resumen-datos').innerHTML = resumen;
+}
+
+// Envío del formulario con EmailJS
+document.getElementById('diagnosticForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  console.log('=== SUBMIT INICIADO ===');
+  
+  // Validar aceptación
+  const acepto = document.getElementById('acepto').checked;
+  console.log('Checkbox acepto:', acepto);
+  
+  if (!acepto) {
+    showError('acepto');
+    console.log('ERROR: No ha aceptado los términos');
+    return;
+  }
+  hideError('acepto');
+  
+  // Calcular protocolo recomendado
+  const protocolo = calcularProtocolo();
+  formData.protocoloRecomendado = protocolo;
+  
+  console.log('Datos completos:', formData);
+  console.log('Protocolo:', protocolo);
+  
+  // Deshabilitar botón y mostrar loading
+  const submitBtn = document.getElementById('submitBtn');
+  const loadingSpinner = document.getElementById('loadingSpinner');
+  submitBtn.disabled = true;
+  loadingSpinner.classList.add('show');
+  
+  // Preparar datos para EmailJS con los nombres correctos
+  const templateParams = {
+    from_name: formData.nombre || 'No proporcionado',
+    email: formData.email || 'No proporcionado',
+    message: generarMensajeCompleto(protocolo)
+  };
+  
+  console.log('Enviando email con EmailJS...', templateParams);
+  
+  // Enviar con EmailJS
+  emailjs.send('service_662y2ak', 'template_7ngqtyt', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      
+      // Ocultar loading
+      loadingSpinner.classList.remove('show');
+      
+      // Mostrar mensaje de éxito
+      document.getElementById('successMessage').classList.add('show');
+      
+      // Esperar 2 segundos y avanzar a pantalla final
+      setTimeout(() => {
+        document.getElementById('successMessage').classList.remove('show');
+        document.getElementById('nombre-final').textContent = formData.nombre || 'Usuario';
+        
+        // Mostrar mensaje de urgencia si aplica
+        if (formData.urgencia === 'urgente' || formData.urgencia === '1mes') {
+          document.getElementById('urgencia-mensaje').style.display = 'block';
+        }
+        
+        nextStep();
+      }, 2000);
+      
+    }, function(error) {
+      console.log('FAILED...', error);
+      
+      // Ocultar loading
+      loadingSpinner.classList.remove('show');
+      
+      // Mostrar mensaje de error
+      document.getElementById('errorMessage').classList.add('show');
+      
+      // Rehabilitar botón
+      submitBtn.disabled = false;
+      
+      // Ocultar mensaje de error después de 5 segundos
+      setTimeout(() => {
+        document.getElementById('errorMessage').classList.remove('show');
+      }, 5000);
+    });
+});
+
+function generarMensajeCompleto(protocolo) {
+  return `
+DIAGNÓSTICO AURA - NUEVA SOLICITUD
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DATOS DEL SOLICITANTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nombre: ${formData.nombre || 'No proporcionado'}
+Email: ${formData.email || 'No proporcionado'}
+Teléfono: ${formData.telefono || 'No proporcionado'}
+Tipo: ${formData.tipo === 'persona' ? 'Persona física' : 'Empresa'}
+Sector: ${formData.sector}${formData.sectorOtro ? ' (' + formData.sectorOtro + ')' : ''}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SITUACIÓN ACTUAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Presencia digital: ${formData.presencia === 'si' ? 'Activa' : formData.presencia === 'algo' ? 'Abandonada' : 'Ninguna'}
+${formData.url ? 'URL: ' + formData.url : ''}
+
+Situación:
+${formData.situacion ? formData.situacion.map(s => '• ' + s).join('\n') : 'No especificada'}
+
+Contenido negativo: ${formData.negativo === 'si' ? 'SÍ - hay contenido perjudicial' : formData.negativo === 'no' ? 'NO - reputación limpia' : 'No verificado'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OBJETIVOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${formData.objetivos ? formData.objetivos.map(o => '• ' + o).join('\n') : 'No especificados'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIMING Y PRESUPUESTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Urgencia: ${formData.urgencia || 'No especificada'}
+Presupuesto: ${formData.presupuesto || 'No especificado'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INFORMACIÓN ADICIONAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${formData.comentarios || 'Sin comentarios adicionales'}
+
+Fuente de referencia: ${formData.fuente || 'No especificada'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROTOCOLO RECOMENDADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${protocolo}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Fecha: ${new Date().toLocaleString('es-ES', { 
+  weekday: 'long', 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+})}
+  `.trim();
+}
+
+function calcularProtocolo() {
+  let scores = {
+    clarity: 0,
+    narrative: 0,
+    presence: 0,
+    elite: 0
+  };
+  
+  // ELITE automático si crisis
+  if (formData.situacion.includes('crisis') || formData.urgencia === 'urgente') {
+    scores.elite += 10;
+  }
+  
+  if (formData.negativo === 'si') {
+    scores.elite += 8;
+  }
+  
+  // CLARITY
+  if (formData.presencia === 'no' || formData.presencia === 'algo') {
+    scores.clarity += 3;
+  }
+  
+  if (formData.situacion.includes('nadie-conoce')) {
+    scores.clarity += 3;
+  }
+  
+  if (formData.presupuesto === '<2000') {
+    scores.clarity += 2;
+  }
+  
+  // NARRATIVE
+  if (formData.situacion.includes('presencia-pobre')) {
+    scores.narrative += 3;
+  }
+  
+  if (formData.objetivos.includes('captar-clientes') || formData.objetivos.includes('inversion')) {
+    scores.narrative += 3;
+  }
+  
+  if (formData.presencia === 'si') {
+    scores.narrative += 2;
+  }
+  
+  // PRESENCE
+  if (formData.objetivos.includes('reconocimiento')) {
+    scores.presence += 4;
+  }
+  
+  if (formData.situacion.includes('posicionamiento')) {
+    scores.presence += 3;
+  }
+  
+  if (formData.negativo === 'no') {
+    scores.presence += 2;
+  }
+  
+  if (formData.presupuesto === '5000-15000' || formData.presupuesto === '>15000') {
+    scores.presence += 2;
+  }
+  
+  // Determinar protocolo predominante
+  const maxScore = Math.max(scores.clarity, scores.narrative, scores.presence);
+  
+  if (maxScore === scores.clarity) {
+    return 'AURA Clarity';
+  } else if (maxScore === scores.narrative) {
+    return 'AURA Narrative';
+  } else {
+    return 'AURA Presence';
+  }
+}
+
+</script>
+</body>
+</html>
