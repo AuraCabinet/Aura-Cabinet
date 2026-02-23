@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué servicio necesitas? | AURA CABINET</title>
+<meta name="description" content="Tres preguntas para encontrar el servicio AURA que necesitas exactamente.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f2ed;
+  --bg-up: #eae6e0;
+  --surface: #ffffff;
+  --accent: #3d6b5c;
+  --accent-light: #4d8270;
+  --accent-dim: rgba(61,107,92,.1);
+  --accent-line: rgba(61,107,92,.15);
+  --text: #1e1e1c;
+  --text-dim: #5a574f;
+  --text-low: #8a8680;
+  --font-d: 'Playfair Display', Georgia, serif;
+  --font-b: 'Outfit', sans-serif;
+  --gold: #b89e6e;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.055;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── LAYOUT ── */
+.wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4rem;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-family: var(--font-d); font-weight:300; font-size:1rem;
+  letter-spacing:.42em; color:var(--text); text-decoration:none;
+  display:block; text-align:center; margin-bottom:3rem;
+}
+.logo span { color:var(--accent); }
+
+/* ── HEADER ── */
+.header { text-align:center; margin-bottom:3rem; }
+.eyebrow {
+  font-size:.65rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:1.2rem; display:block;
+}
+.header h1 {
+  font-family:var(--font-d); font-weight:300;
+  font-size:clamp(1.8rem,5vw,2.8rem);
+  color:var(--text); line-height:1.15; margin-bottom:1rem;
+}
+.header h1 em { font-style:italic; color:var(--accent); }
+.header p { color:var(--text-dim); font-size:.95rem; max-width:480px; margin:0 auto; }
+
+/* ── PROGRESS ── */
+.progress-wrap {
+  display:flex; align-items:center; gap:.8rem;
+  margin-bottom:2.5rem;
+}
+.progress-track {
+  flex:1; height:3px; background:var(--bg-up); border-radius:2px; overflow:hidden;
+}
+.progress-fill {
+  height:100%; background:var(--accent);
+  transition:width .5s cubic-bezier(.22,1,.36,1); width:0%;
+}
+.progress-label {
+  font-size:.65rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--text-low); white-space:nowrap;
+}
+
+/* ── PREGUNTA ── */
+.pregunta {
+  display:none; animation:fadeUp .4s forwards;
+}
+.pregunta.activa { display:block; }
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.pregunta-num {
+  font-size:.65rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:.8rem;
+}
+.pregunta h2 {
+  font-family:var(--font-d); font-weight:400;
+  font-size:clamp(1.3rem,4vw,1.8rem);
+  color:var(--text); margin-bottom:.5rem; line-height:1.3;
+}
+.pregunta .sub {
+  color:var(--text-dim); font-size:.9rem; margin-bottom:2rem;
+}
+
+/* ── OPCIONES ── */
+.opciones { display:flex; flex-direction:column; gap:.8rem; }
+
+.opcion {
+  background:var(--surface);
+  border:1px solid var(--accent-line);
+  padding:1.3rem 1.5rem;
+  cursor:pointer;
+  transition:all .25s;
+  display:flex; align-items:flex-start; gap:1rem;
+  text-align:left;
+  border-left:3px solid transparent;
+}
+.opcion:hover {
+  border-left-color:var(--accent);
+  box-shadow:0 4px 20px rgba(61,107,92,.08);
+  transform:translateX(3px);
+}
+.opcion.seleccionada {
+  border-left-color:var(--accent);
+  background:var(--accent-dim);
+}
+
+.opcion-icono {
+  font-size:1.1rem; flex-shrink:0; margin-top:.1rem;
+  color:var(--accent);
+}
+.opcion-texto strong {
+  display:block; font-size:.95rem; color:var(--text);
+  margin-bottom:.2rem; font-weight:500;
+}
+.opcion-texto span {
+  font-size:.82rem; color:var(--text-dim); line-height:1.5;
+}
+
+/* ── RESULTADO ── */
+.resultado { display:none; animation:fadeUp .5s forwards; }
+.resultado.activo { display:block; }
+
+.resultado-eyebrow {
+  font-size:.65rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:1rem; text-align:center;
+}
+
+.servicio-bloque {
+  border:1px solid var(--accent-line);
+  border-top:3px solid var(--accent);
+  background:var(--surface);
+  padding:2rem; margin-bottom:1rem;
+}
+.servicio-bloque .s-label {
+  font-size:.62rem; letter-spacing:.25em; text-transform:uppercase;
+  color:var(--text-low); margin-bottom:.5rem;
+}
+.servicio-bloque h2 {
+  font-family:var(--font-d); font-weight:300;
+  font-size:clamp(1.5rem,4vw,2rem);
+  color:var(--text); margin-bottom:.8rem; line-height:1.2;
+}
+.servicio-bloque h2 em { font-style:italic; color:var(--accent); }
+.servicio-bloque p {
+  color:var(--text-dim); font-size:.92rem; line-height:1.8;
+  margin-bottom:1.5rem;
+}
+.servicio-items {
+  list-style:none; margin-bottom:1.5rem;
+}
+.servicio-items li {
+  font-size:.88rem; color:var(--text-dim); padding:.35rem 0;
+  border-bottom:1px solid rgba(61,107,92,.06);
+  display:flex; gap:.6rem; align-items:flex-start;
+}
+.servicio-items li::before {
+  content:'◈'; color:var(--accent); font-size:.72rem; margin-top:.2rem; flex-shrink:0;
+}
+
+.btn-ir {
+  display:block; width:100%; padding:1rem;
+  background:var(--accent); color:white; text-decoration:none;
+  font-family:var(--font-b); font-size:.75rem; letter-spacing:.22em;
+  text-transform:uppercase; text-align:center; font-weight:500;
+  transition:all .3s; border:none; cursor:pointer;
+}
+.btn-ir:hover {
+  background:var(--accent-light);
+  box-shadow:0 4px 20px rgba(61,107,92,.22);
+}
+
+/* Secundario */
+.secundario-bloque {
+  background:var(--bg-up); border:1px solid var(--accent-line);
+  padding:1.5rem; margin-bottom:1rem;
+}
+.secundario-bloque h4 {
+  font-family:var(--font-d); font-size:1rem; color:var(--text);
+  margin-bottom:.5rem;
+}
+.secundario-bloque p {
+  font-size:.85rem; color:var(--text-dim); margin-bottom:1rem; line-height:1.6;
+}
+.btn-sec {
+  display:inline-block; padding:.7rem 1.5rem;
+  border:1px solid var(--accent); color:var(--accent);
+  text-decoration:none; font-family:var(--font-b);
+  font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  transition:all .3s; margin-right:.5rem; margin-bottom:.5rem;
+}
+.btn-sec:hover { background:var(--accent); color:white; }
+
+.reiniciar {
+  text-align:center; margin-top:1.5rem;
+}
+.reiniciar button {
+  background:none; border:none; cursor:pointer;
+  font-family:var(--font-b); font-size:.75rem;
+  color:var(--text-low); letter-spacing:.15em; text-transform:uppercase;
+  text-decoration:underline; padding:.5rem;
+}
+.reiniciar button:hover { color:var(--accent); }
+
+/* Footer */
+.footer {
+  text-align:center; padding:2rem 1.5rem;
+  color:var(--text-low); font-size:.8rem;
+  border-top:1px solid var(--accent-line);
+  position:relative; z-index:1;
+}
+.footer a { color:var(--accent); text-decoration:none; }
+
+@media(max-width:600px){
+  .wrap { padding:2.5rem 1.2rem 3rem; }
+  .opcion { padding:1.1rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a href="/" class="logo">AURA <span>CABINET</span></a>
+
+  <!-- HEADER -->
+  <div class="header" id="headerBloque">
+    <span class="eyebrow">Orientación — Confidencial</span>
+    <h1>Tres preguntas para encontrar<br><em>tu servicio exacto</em></h1>
+    <p>No todos los problemas de reputación son iguales. Dinos tu situación y te decimos exactamente dónde ir.</p>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-label" id="progressLabel">1 de 3</span>
+  </div>
+
+  <!-- PREGUNTA 1 -->
+  <div class="pregunta activa" id="p1">
+    <div class="pregunta-num">Pregunta 1 de 3</div>
+    <h2>¿Cuál describe mejor<br>tu situación ahora mismo?</h2>
+    <p class="sub">Selecciona la que más se aproxime.</p>
+    <div class="opciones">
+      <div class="opcion" onclick="responder(1,'personal')">
+        <span class="opcion-icono">◈</span>
+        <div class="opcion-texto">
+          <strong>Quiero controlar lo que se sabe de mí</strong>
+          <span>Mi imagen personal o profesional no refleja quién soy. Quiero construir o proteger mi narrativa.</span>
+        </div>
+      </div>
+      <div class="opcion" onclick="responder(1,'legal')">
+        <span class="opcion-icono">◉</span>
+        <div class="opcion-texto">
+          <strong>Estoy o he estado en un proceso legal</strong>
+          <span>Hay o ha habido una investigación, juicio o acusación que ha afectado mi reputación online.</span>
+        </div>
+      </div>
+      <div class="opcion" onclick="responder(1,'negocio')">
+        <span class="opcion-icono">◇</span>
+        <div class="opcion-texto">
+          <strong>Tengo un negocio con reseñas o valoraciones</strong>
+          <span>Clínica, restaurante, despacho u otro negocio local con presencia en Google My Business.</span>
+        </div>
+      </div>
+      <div class="opcion" onclick="responder(1,'crisis')">
+        <span class="opcion-icono">⚠</span>
+        <div class="opcion-texto">
+          <strong>Tengo una crisis reputacional activa</strong>
+          <span>Algo está ocurriendo ahora mismo — noticias, rumores, ataques — y necesito ayuda urgente.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA 2 -->
+  <div class="pregunta" id="p2">
+    <div class="pregunta-num">Pregunta 2 de 3</div>
+    <h2 id="p2-titulo">¿Qué es lo que más te preocupa?</h2>
+    <p class="sub" id="p2-sub">Selecciona la opción que mejor describe el problema.</p>
+    <div class="opciones" id="p2-opciones"></div>
+  </div>
+
+  <!-- PREGUNTA 3 -->
+  <div class="pregunta" id="p3">
+    <div class="pregunta-num">Pregunta 3 de 3</div>
+    <h2 id="p3-titulo">¿Cuál es tu prioridad ahora mismo?</h2>
+    <p class="sub" id="p3-sub">Esto nos ayuda a afinar la recomendación.</p>
+    <div class="opciones" id="p3-opciones"></div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="resultado" id="resultado"></div>
+
+</div>
+
+<footer class="footer">
+  <p>© 2026 AURA CABINET &nbsp;·&nbsp; <a href="/legal.html">Privacidad</a> &nbsp;·&nbsp; <a href="/">aura-cabinet.com</a></p>
+</footer>
+
+<script>
+// ── ESTADO ────────────────────────────────────────────────────────────────
+const estado = { p1: null, p2: null, p3: null };
+
+// ── PREGUNTAS DINÁMICAS ───────────────────────────────────────────────────
+const flujos = {
+  personal: {
+    p2: {
+      titulo: '¿Qué existe sobre ti online que te preocupa?',
+      sub: 'Selecciona la situación más cercana a la tuya.',
+      opciones: [
+        { valor:'limpiar', icono:'◈', titulo:'Hay contenido negativo o desactualizado', desc:'Artículos, fotos, comentarios o registros que ya no te representan y siguen apareciendo en Google.' },
+        { valor:'construir', icono:'◉', titulo:'No hay nada — o lo que hay no es suficiente', desc:'Mi presencia online es inexistente o no refleja mi nivel profesional real.' },
+        { valor:'posicionar', icono:'◇', titulo:'Quiero ser reconocido como referente', desc:'Tengo trayectoria pero no visibilidad estratégica en los lugares donde se toman decisiones.' },
+      ]
+    },
+    p3: {
+      limpiar: {
+        titulo: '¿Con qué urgencia necesitas actuar?',
+        sub: 'Esto determina el protocolo y los plazos.',
+        opciones: [
+          { valor:'urgente', icono:'⚠', titulo:'Urgente — está afectando mi vida profesional ahora', desc:'Oportunidades perdidas, relaciones dañadas, impacto económico ya visible.' },
+          { valor:'pronto', icono:'◈', titulo:'Pronto — en los próximos meses', desc:'No es una emergencia pero quiero resolverlo antes de que se complique.' },
+          { valor:'preventivo', icono:'◇', titulo:'Preventivo — quiero blindarme antes de que pase algo', desc:'Mi situación actual es estable pero quiero protegerme para el futuro.' },
+        ]
+      },
+      construir: {
+        titulo: '¿Qué quieres conseguir con tu nueva presencia?',
+        sub: '',
+        opciones: [
+          { valor:'clientes', icono:'◈', titulo:'Captar clientes o proyectos', desc:'Quiero que mi presencia online genere oportunidades de negocio reales.' },
+          { valor:'inversion', icono:'◉', titulo:'Atraer inversión o socios', desc:'Necesito proyectar solvencia y autoridad ante inversores o potenciales socios.' },
+          { valor:'autoridad', icono:'◇', titulo:'Posicionarme como experto', desc:'Quiero ser referente en mi sector y que eso sea visible para quien me busca.' },
+        ]
+      },
+      posicionar: {
+        titulo: '¿Dónde quieres ser visible?',
+        sub: '',
+        opciones: [
+          { valor:'medios', icono:'◈', titulo:'Medios de comunicación y prensa', desc:'Quiero aparecer en publicaciones de mi sector o en medios generalistas de prestigio.' },
+          { valor:'digital', icono:'◉', titulo:'Ecosistema digital — Google, LinkedIn, web', desc:'Quiero dominar los resultados de búsqueda y mi perfil digital.' },
+          { valor:'ambos', icono:'◇', titulo:'Ambos — visibilidad total', desc:'Quiero una estrategia completa de presencia offline y online.' },
+        ]
+      }
+    }
+  },
+
+  legal: {
+    p2: {
+      titulo: '¿En qué momento del proceso te encuentras?',
+      sub: '',
+      opciones: [
+        { valor:'antes', icono:'◈', titulo:'Antes — quiero prepararme antes de que sea público', desc:'El proceso existe o puede existir pero aún no ha trascendido. Quiero blindarme.' },
+        { valor:'durante', icono:'◉', titulo:'Durante — el proceso es público y hay cobertura mediática', desc:'Hay noticias, búsquedas activas, y mi reputación está sufriendo ahora mismo.' },
+        { valor:'despues', icono:'◇', titulo:'Después — el proceso terminó pero el daño permanece', desc:'Fue absuelto o resuelto, pero Google sigue mostrando lo negativo.' },
+      ]
+    },
+    p3: {
+      antes: {
+        titulo: '¿Cuál es tu prioridad de blindaje?',
+        sub: '',
+        opciones: [
+          { valor:'google', icono:'◈', titulo:'Controlar qué aparece en Google con mi nombre', desc:'Asegurar que los resultados actuales no me perjudiquen si el caso se hace público.' },
+          { valor:'medios', icono:'◉', titulo:'Gestionar la relación con medios de comunicación', desc:'Tener un protocolo preparado por si hay cobertura periodística.' },
+          { valor:'completo', icono:'◇', titulo:'Blindaje completo — todos los frentes', desc:'Quiero estar preparado en Google, medios, redes y entorno profesional.' },
+        ]
+      },
+      durante: {
+        titulo: '¿Qué está ocurriendo ahora mismo?',
+        sub: '',
+        opciones: [
+          { valor:'noticias', icono:'⚠', titulo:'Hay noticias negativas activas en medios', desc:'Artículos recientes que aparecen en Google con mi nombre y el proceso.' },
+          { valor:'redes', icono:'◈', titulo:'Hay ataques o menciones en redes sociales', desc:'Comentarios, publicaciones o campañas que están dañando mi imagen.' },
+          { valor:'ambos', icono:'◉', titulo:'Ambos — medios y redes simultáneamente', desc:'La crisis es múltiple y necesito gestión en todos los frentes a la vez.' },
+        ]
+      },
+      despues: {
+        titulo: '¿Qué queda pendiente de resolver?',
+        sub: '',
+        opciones: [
+          { valor:'google', icono:'◈', titulo:'Limpiar los resultados de Google', desc:'Mi nombre sigue asociado al proceso aunque ya terminó. Necesito desvincularlo.' },
+          { valor:'narrativa', icono:'◉', titulo:'Reconstruir mi narrativa profesional', desc:'Quiero que mi perfil online cuente quién soy ahora, no lo que ocurrió.' },
+          { valor:'completo', icono:'◇', titulo:'Ambos — limpieza y reconstrucción', desc:'Necesito eliminar lo negativo y construir una presencia sólida desde cero.' },
+        ]
+      }
+    }
+  },
+
+  negocio: {
+    p2: {
+      titulo: '¿Cuál es tu situación con las reseñas?',
+      sub: '',
+      opciones: [
+        { valor:'negativas', icono:'⚠', titulo:'Tengo reseñas negativas que me están perjudicando', desc:'Una o varias reseñas negativas o falsas están afectando mi valoración y captación de clientes.' },
+        { valor:'pocas', icono:'◈', titulo:'Tengo pocas reseñas y necesito más', desc:'Mi valoración es baja o mi perfil tiene poca actividad comparado con la competencia.' },
+        { valor:'mejorar', icono:'◉', titulo:'Quiero mejorar mi posición en Google Maps', desc:'Quiero aparecer más arriba en búsquedas locales y captar más clientes desde Google.' },
+      ]
+    },
+    p3: {
+      negativas: {
+        titulo: '¿Qué tipo de reseñas negativas tienes?',
+        sub: '',
+        opciones: [
+          { valor:'falsas', icono:'⚠', titulo:'Creo que son falsas o de la competencia', desc:'No reconozco al cliente o el contenido no corresponde a ninguna experiencia real.' },
+          { valor:'reales', icono:'◈', titulo:'Son reales pero injustas o exageradas', desc:'El cliente existió pero la reseña no refleja la situación de forma objetiva.' },
+          { valor:'mix', icono:'◉', titulo:'Hay de todo — falsas, injustas y algunas reales', desc:'Mi perfil tiene un mix de reseñas problemáticas de distintos tipos.' },
+        ]
+      },
+      pocas: {
+        titulo: '¿Cuál es tu objetivo principal?',
+        sub: '',
+        opciones: [
+          { valor:'volumen', icono:'◈', titulo:'Conseguir más reseñas auténticas rápido', desc:'Necesito aumentar el número de reseñas para mejorar mi valoración general.' },
+          { valor:'calidad', icono:'◉', titulo:'Mejorar la calidad y el contenido de las reseñas', desc:'Quiero reseñas detalladas que ayuden a convertir a futuros clientes.' },
+          { valor:'sistema', icono:'◇', titulo:'Crear un sistema para obtener reseñas de forma continua', desc:'Quiero automatizar la captación de reseñas para mantener el crecimiento.' },
+        ]
+      },
+      mejorar: {
+        titulo: '¿Cuál es tu prioridad de visibilidad?',
+        sub: '',
+        opciones: [
+          { valor:'maps', icono:'◈', titulo:'Aparecer en el top 3 de Google Maps en mi zona', desc:'Quiero ser visible cuando alguien busca mi tipo de negocio cerca de mi ubicación.' },
+          { valor:'busquedas', icono:'◉', titulo:'Posicionarme en búsquedas locales de Google', desc:'Quiero aparecer cuando busquen mi servicio en mi ciudad aunque no usen Maps.' },
+          { valor:'ambos', icono:'◇', titulo:'Ambos — Maps y búsquedas locales', desc:'Visibilidad completa en todo el ecosistema local de Google.' },
+        ]
+      }
+    }
+  },
+
+  crisis: {
+    p2: {
+      titulo: '¿De dónde viene la crisis?',
+      sub: '',
+      opciones: [
+        { valor:'medios', icono:'⚠', titulo:'Noticias o artículos en medios de comunicación', desc:'Hay cobertura periodística activa sobre mí o mi empresa.' },
+        { valor:'redes', icono:'◈', titulo:'Redes sociales — viralización o ataques coordinados', desc:'Hay un post, hilo o campaña que se está difundiendo y dañando mi imagen.' },
+        { valor:'legal', icono:'◉', titulo:'Está relacionada con un proceso legal o acusación', desc:'La crisis tiene una dimensión legal — denuncia, imputación o acusación pública.' },
+        { valor:'mixta', icono:'◇', titulo:'Varios frentes simultáneamente', desc:'La crisis es múltiple — medios, redes, entorno profesional todo a la vez.' },
+      ]
+    },
+    p3: {
+      medios: {
+        titulo: '¿Qué necesitas con mayor urgencia?',
+        sub: '',
+        opciones: [
+          { valor:'contener', icono:'⚠', titulo:'Contener el daño ahora mismo', desc:'Necesito parar la hemorragia — que no se extienda más.' },
+          { valor:'responder', icono:'◈', titulo:'Diseñar una respuesta estratégica', desc:'Necesito saber qué decir, cuándo y cómo sin empeorar la situación.' },
+          { valor:'limpiar', icono:'◉', titulo:'Limpiar los resultados de Google a medio plazo', desc:'La cobertura ya existe — necesito que deje de ser lo primero que aparece.' },
+        ]
+      },
+      redes: {
+        titulo: '¿Cuánto tiempo lleva activa la crisis?',
+        sub: '',
+        opciones: [
+          { valor:'horas', icono:'⚠', titulo:'Menos de 24 horas — acaba de empezar', desc:'Necesito intervención inmediata antes de que se extienda.' },
+          { valor:'dias', icono:'◈', titulo:'Entre 1 y 7 días', desc:'Ya hay difusión pero todavía hay margen de contención.' },
+          { valor:'semanas', icono:'◉', titulo:'Más de una semana', desc:'La crisis está asentada y ahora toca gestionar el daño y la reconstrucción.' },
+        ]
+      },
+      legal: {
+        titulo: '¿En qué momento del proceso legal estás?',
+        sub: '',
+        opciones: [
+          { valor:'antes', icono:'◈', titulo:'El proceso existe pero no es público aún', desc:'Quiero blindarme antes de que trascienda.' },
+          { valor:'durante', icono:'⚠', titulo:'El proceso es público y hay cobertura activa', desc:'Necesito gestión narrativa coordinada con mi defensa ahora mismo.' },
+          { valor:'despues', icono:'◉', titulo:'El proceso terminó pero el daño online permanece', desc:'Fue resuelto favorablemente pero Google no lo sabe.' },
+        ]
+      },
+      mixta: {
+        titulo: '¿Cuál es el frente más urgente?',
+        sub: '',
+        opciones: [
+          { valor:'google', icono:'◈', titulo:'Lo que aparece en Google con mi nombre', desc:'Las búsquedas de mi nombre son lo que más daño está causando.' },
+          { valor:'medios', icono:'⚠', titulo:'La cobertura en medios de comunicación', desc:'Los artículos y noticias son el origen del problema.' },
+          { valor:'todo', icono:'◉', titulo:'Necesito gestión completa de todos los frentes', desc:'Es una crisis total que requiere intervención simultánea en todo.' },
+        ]
+      }
+    }
+  }
+};
+
+// ── SERVICIOS / RESULTADOS ────────────────────────────────────────────────
+function calcularServicio() {
+  const { p1, p2, p3 } = estado;
+
+  // LEGAL — cualquier flujo legal o crisis con dimensión legal
+  if(p1 === 'legal') return 'legal';
+  if(p1 === 'crisis' && p2 === 'legal') return 'legal';
+
+  // RESEÑAS — flujo negocio
+  if(p1 === 'negocio') return 'resenas';
+
+  // ELITE — crisis urgente sin dimensión legal
+  if(p1 === 'crisis') return 'elite';
+
+  // VACIADO — limpiar contenido con urgencia alta
+  if(p1 === 'personal' && p2 === 'limpiar' && p3 === 'urgente') return 'elite';
+  if(p1 === 'personal' && p2 === 'limpiar') return 'vaciado';
+
+  // PRESENCE — posicionamiento y expansión
+  if(p1 === 'personal' && p2 === 'posicionar') return 'presence';
+
+  // NARRATIVE — construir presencia
+  if(p1 === 'personal' && p2 === 'construir') return 'narrative';
+
+  // Default
+  return 'clarity';
+}
+
+const SERVICIOS = {
+  clarity: {
+    nombre: 'AURA Clarity',
+    subtitulo: 'Diagnóstico estratégico — el punto de partida',
+    desc: 'Tu situación requiere primero entender exactamente dónde estás. AURA Clarity es una auditoría 360º de tu reputación digital: qué existe, qué falta, qué riesgo real tienes y qué protocolo necesitas. Sin diagnóstico no hay estrategia real.',
+    items: ['Auditoría completa de presencia y Google','Mapa de vulnerabilidades reputacionales','Análisis de percepción actual vs. objetivos','Hoja de ruta estratégica con prioridades'],
+    url: '/diagnostico-aura.html',
+    cta: 'Iniciar Diagnóstico AURA',
+    secundarios: []
+  },
+  vaciado: {
+    nombre: 'Vaciado Estratégico',
+    subtitulo: 'Limpieza digital y derecho al olvido',
+    desc: 'Hay contenido online que ya no te representa y está formando opinión sobre ti cada día. El Vaciado Estratégico identifica, elimina o desvincula ese contenido usando derecho al olvido GDPR, acuerdos con medios y SEO de sustitución.',
+    items: ['Identificación de todo el contenido problemático','Solicitudes de derecho al olvido ante Google','Gestión con medios para retirada o modificación','SEO de sustitución para contenido no eliminable'],
+    url: '/vaciado-estrategico.html',
+    cta: 'Ver Vaciado Estratégico',
+    secundarios: [{ nombre:'AURA Clarity — diagnóstico previo', url:'/diagnostico-aura.html' }]
+  },
+  narrative: {
+    nombre: 'AURA Narrative',
+    subtitulo: 'Construcción de narrativa y autoridad',
+    desc: 'La palabra como inversión. Construimos o reescribimos todos los textos que definen quién eres: web, LinkedIn, bio profesional, pitch, discursos. Cada palabra diseñada para proyectar autoridad y coherencia.',
+    items: ['Estrategia narrativa maestra y tono de voz','Textos web, LinkedIn y bio profesional','Pitch y presentación ejecutiva','Manual de comunicación para uso propio'],
+    url: '/control-narrativa.html',
+    cta: 'Ver Control de Narrativa',
+    secundarios: [{ nombre:'AURA Clarity — diagnóstico previo', url:'/diagnostico-aura.html' }]
+  },
+  presence: {
+    nombre: 'AURA Presence',
+    subtitulo: 'Expansión estratégica y posicionamiento',
+    desc: 'Posicionamiento en medios de prestigio, ecosistemas de decisión y canales donde te buscan quienes importan. Siempre manteniendo el control: tú decides dónde, cuándo y cómo apareces.',
+    items: ['Estrategia de medios y RRPP selectiva','Acceso a ecosistemas y círculos de decisión','Posicionamiento como referente en tu sector','Seguimiento y ajuste continuo'],
+    url: '/acceso-ecosistemas.html',
+    cta: 'Ver Acceso a Ecosistemas',
+    secundarios: [{ nombre:'AURA Narrative — base narrativa previa', url:'/control-narrativa.html' }]
+  },
+  elite: {
+    nombre: 'AURA Elite',
+    subtitulo: 'Gestión 360º — intervención inmediata',
+    desc: 'Para situaciones que requieren acción inmediata y completa. Dirección externa de comunicación, gestión de crisis, vaciado digital y blindaje permanente. Todos los frentes gestionados simultáneamente.',
+    items: ['Activación en menos de 24 horas','Gestión completa de medios, redes y Google','Vaciado estratégico y derecho al olvido','Monitorización 24/7 y blindaje permanente'],
+    url: '/soberania-reputacional.html',
+    cta: 'Ver Soberanía Reputacional',
+    secundarios: []
+  },
+  legal: {
+    nombre: 'AURA Legal',
+    subtitulo: 'Reputación durante procesos legales',
+    desc: 'Tu abogado protege tus derechos en la sala. Nosotros protegemos quién eres fuera de ella — en Google, en medios, en redes y ante quienes toman decisiones sobre ti mientras el proceso avanza.',
+    items: ['Blindaje preventivo antes de que el caso sea público','Gestión narrativa coordinada con la defensa','Control de medios, Google y redes 24/7','Restauración post-judicial — Google no olvida solo'],
+    url: '/soberania-reputacional.html',
+    cta: 'Ver Soberanía Reputacional',
+    secundarios: [{ nombre:'Contacto directo — casos legales', url:'mailto:private@aura-cabinet.com?subject=Consulta%20confidencial%20AURA%20Legal' }]
+  },
+  resenas: {
+    nombre: 'AURA Reseñas',
+    subtitulo: 'Gestión de reseñas Google para negocios',
+    desc: 'Gestión profesional de reseñas Google para clínicas, negocios locales y empresas. Mejora tu valoración, gestiona reseñas negativas o falsas y convierte tu reputación online en captación real de clientes.',
+    items: ['Auditoría de reputación Google actual','Gestión e impugnación de reseñas falsas o injustas','Sistemas para generar reseñas auténticas','Optimización de Google My Business y Maps'],
+    url: '/protocolos.html',
+    cta: 'Ver Protocolos AURA',
+    secundarios: [{ nombre:'Diagnóstico completo gratuito', url:'/diagnostico-aura.html' }]
+  }
+};
+
+// ── LÓGICA DE NAVEGACIÓN ──────────────────────────────────────────────────
+function responder(pregunta, valor) {
+  estado['p' + pregunta] = valor;
+
+  // Highlight selección
+  const opciones = document.querySelectorAll('#p' + pregunta + ' .opcion');
+  opciones.forEach(o => o.classList.remove('seleccionada'));
+  event.currentTarget.classList.add('seleccionada');
+
+  setTimeout(() => {
+    if(pregunta === 1) mostrarP2(valor);
+    else if(pregunta === 2) mostrarP3(valor);
+    else if(pregunta === 3) mostrarResultado();
+  }, 280);
+}
+
+function mostrarP2(p1) {
+  const flujo = flujos[p1];
+  if(!flujo) return;
+
+  document.getElementById('p2-titulo').textContent = flujo.p2.titulo;
+  document.getElementById('p2-sub').textContent = flujo.p2.sub || '';
+
+  const wrap = document.getElementById('p2-opciones');
+  wrap.innerHTML = '';
+  flujo.p2.opciones.forEach(op => {
+    wrap.innerHTML += `
+      <div class="opcion" onclick="responder(2,'${op.valor}')">
+        <span class="opcion-icono">${op.icono}</span>
+        <div class="opcion-texto">
+          <strong>${op.titulo}</strong>
+          <span>${op.desc}</span>
+        </div>
+      </div>`;
+  });
+
+  cambiarPregunta('p1', 'p2');
+  actualizarProgress(2);
+}
+
+function mostrarP3(p2) {
+  const p1 = estado.p1;
+  const flujoP3 = flujos[p1]?.p3?.[p2];
+  if(!flujoP3) { mostrarResultado(); return; }
+
+  document.getElementById('p3-titulo').textContent = flujoP3.titulo;
+  document.getElementById('p3-sub').textContent = flujoP3.sub || '';
+
+  const wrap = document.getElementById('p3-opciones');
+  wrap.innerHTML = '';
+  flujoP3.opciones.forEach(op => {
+    wrap.innerHTML += `
+      <div class="opcion" onclick="responder(3,'${op.valor}')">
+        <span class="opcion-icono">${op.icono}</span>
+        <div class="opcion-texto">
+          <strong>${op.titulo}</strong>
+          <span>${op.desc}</span>
+        </div>
+      </div>`;
+  });
+
+  cambiarPregunta('p2', 'p3');
+  actualizarProgress(3);
+}
+
+function mostrarResultado() {
+  const servicio = calcularServicio();
+  const s = SERVICIOS[servicio];
+
+  document.getElementById('resultado').innerHTML = `
+    <p class="resultado-eyebrow">Tu protocolo identificado</p>
+
+    <div class="servicio-bloque">
+      <div class="s-label">Protocolo AURA</div>
+      <h2>${s.nombre}<br><em>${s.subtitulo}</em></h2>
+      <p>${s.desc}</p>
+      <ul class="servicio-items">
+        ${s.items.map(i => '<li>' + i + '</li>').join('')}
+      </ul>
+    </div>
+
+    <div class="secundario-bloque" style="border-top:3px solid var(--accent);background:var(--surface);padding:2rem;">
+      <h4>El siguiente paso es tu Auditoría Express</h4>
+      <p>Antes de ir al protocolo, la Auditoría Express analiza tu situación actual en Google y te da los 5 puntos críticos que debes revisar. Es gratuita, dura 2 minutos y tu resultado llega al momento.</p>
+      <a href="/auditoria-express.html?servicio=${servicio}" class="btn-ir" style="display:block;text-align:center;margin-top:1.2rem;">
+        Hacer mi Auditoría Express Gratuita
+      </a>
+    </div>
+
+    <div class="reiniciar">
+      <button onclick="reiniciar()">← Volver a empezar</button>
+    </div>
+  `;
+
+  // Ocultar progress y header
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('headerBloque').style.display = 'none';
+
+  cambiarPregunta('p3', null);
+  document.getElementById('resultado').classList.add('activo');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function cambiarPregunta(actual, siguiente) {
+  document.getElementById(actual).classList.remove('activa');
+  if(siguiente) document.getElementById(siguiente).classList.add('activa');
+}
+
+function actualizarProgress(paso) {
+  const pct = (paso / 3) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = paso + ' de 3';
+}
+
+function reiniciar() {
+  estado.p1 = null; estado.p2 = null; estado.p3 = null;
+  document.getElementById('resultado').classList.remove('activo');
+  document.getElementById('resultado').innerHTML = '';
+  document.getElementById('progressWrap').style.display = 'flex';
+  document.getElementById('headerBloque').style.display = 'block';
+  ['p1','p2','p3'].forEach(id => document.getElementById(id).classList.remove('activa'));
+  document.getElementById('p1').classList.add('activa');
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressLabel').textContent = '1 de 3';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
