@@ -896,6 +896,9 @@ footer ul a:hover{color:#6aaa8e}
 @media(max-width:960px){
   .filosofia-wrap,.valores-grid{grid-template-columns:1fr}
   .filo-visual{height:320px}
+  .filosofia-wrap{gap:3rem}
+  .grid-2col-inline{grid-template-columns:1fr!important}
+  .section-inline-padding{padding:6rem 2rem!important}
   .footer-grid{grid-template-columns:1fr 1fr}
   .chatbot-window{width:90%;right:5%;left:5%}
 }
@@ -909,6 +912,20 @@ footer ul a:hover{color:#6aaa8e}
   .chatbot-window{bottom:90px;max-height:500px;width:94%;right:3%;left:3%}
   .music-btn{left:1.5rem;bottom:1.5rem}
   .valores-grid{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column;align-items:center}
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary{width:100%;max-width:320px;text-align:center}
+  .cta-actions{flex-direction:column;align-items:center}
+  .cta-actions .btn-cta-primary,
+  .cta-actions .btn-cta-secondary{width:100%;max-width:320px;justify-content:center}
+  .grid-2col-inline{grid-template-columns:1fr!important}
+  .section-inline-padding{padding:5rem 1.3rem!important}
+  .faq-question{padding:1.2rem!important}
+  .faq-answer{padding:0 1.2rem 1.2rem 1.2rem!important}
+  #faqsMainToggle{padding:1.2rem 1.5rem!important;font-size:1rem!important}
+  .protocolo-card{padding:2rem 1.5rem!important}
+  .aura-highlight{padding:2rem 1.5rem!important}
+  .historia-highlight{padding:1.5rem!important}
 }
 </style>
 </head>
@@ -1107,7 +1124,7 @@ footer ul a:hover{color:#6aaa8e}
 <!-- ══════════════════════════════════════════
      VISION (nueva sección)
      ══════════════════════════════════════════ -->
-<section id="vision" style="background:var(--bg);padding:9rem 3.2rem">
+<section class="section-inline-padding" id="vision" style="background:var(--bg);padding:9rem 3.2rem">
   <div style="max-width:960px;margin:0 auto" class="reveal">
     <p class="section-label">Visión & Objetivos</p>
     <h2 class="section-title">La paz de poder<br>reescribir tu historia</h2>
@@ -1129,7 +1146,7 @@ footer ul a:hover{color:#6aaa8e}
 <!-- ══════════════════════════════════════════
      ¿CUÁNDO NECESITAS AURA?
      ══════════════════════════════════════════ -->
-<section id="cuando-necesitas-aura" style="background:var(--surface);padding:8rem 3.2rem">
+<section class="section-inline-padding" id="cuando-necesitas-aura" style="background:var(--surface);padding:8rem 3.2rem">
   <div style="max-width:1120px;margin:0 auto" class="reveal">
     <p class="section-label">¿Cuándo necesitas AURA?</p>
     <h2 class="section-title">Situaciones donde<br>la soberanía narrativa es esencial</h2>
@@ -1185,13 +1202,13 @@ footer ul a:hover{color:#6aaa8e}
 <!-- ══════════════════════════════════════════
      EMPRESAS (nuevo)
      ══════════════════════════════════════════ -->
-<section id="empresas" style="background:var(--bg-up);padding:8rem 3.2rem">
+<section class="section-inline-padding" id="empresas" style="background:var(--bg-up);padding:8rem 3.2rem">
   <div style="max-width:1120px;margin:0 auto" class="reveal">
     <p class="section-label">Servicios Corporativos</p>
     <h2 class="section-title">Soluciones para<br>Empresas</h2>
     <p class="section-desc">Servicios estratégicos para empresas que buscan posicionamiento de marca, entrada a nuevos mercados y gestión de reputación corporativa con la misma filosofía de discreción y control narrativo.</p>
     
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;margin-top:3rem">
+    <div class="grid-2col-inline" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;margin-top:3rem">
       <div style="background:var(--surface);padding:2.5rem;box-shadow:0 2px 16px rgba(61,107,92,.06)">
         <h4 style="font-family:var(--font-d);font-size:1.3rem;margin-bottom:1rem;color:var(--text)"><span style="font-weight:300;letter-spacing:.1em;color:var(--accent)">◆</span> Crisis de Marca</h4>
         <p style="color:var(--text-dim);font-size:.92rem;line-height:1.8;margin-bottom:1.2rem">Gestión integral de crisis corporativas: desde escándalos públicos hasta errores de comunicación. Contención, estrategia de respuesta y reconstrucción de confianza sin que se note la intervención externa.</p>
@@ -1230,7 +1247,7 @@ footer ul a:hover{color:#6aaa8e}
     
     <div style="margin-top:3rem;padding:2.5rem;background:var(--surface);border-left:4px solid var(--accent)">
       <h4 style="font-family:var(--font-d);font-size:1.2rem;margin-bottom:1rem;color:var(--text)">También ofrecemos:</h4>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;color:var(--text-dim);font-size:.9rem">
+      <div class="grid-2col-inline" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;color:var(--text-dim);font-size:.9rem">
         <div>• Marketing & Posicionamiento corporativo</div>
         <div>• Consultoría estratégica de comunicación</div>
         <div>• Relaciones públicas y acceso a medios</div>
@@ -1241,13 +1258,13 @@ footer ul a:hover{color:#6aaa8e}
 </section>
 
 <!-- PROTOCOLOS AURA (4 servicios) -->
-<section id="servicios-aura" style="background:var(--bg-up);padding:9rem 3.2rem">
+<section class="section-inline-padding" id="servicios-aura" style="background:var(--bg-up);padding:9rem 3.2rem">
   <div class="section-header center reveal">
     <p class="section-label">Protocolos AURA</p>
     <h2 class="section-title">Nuestros Protocolos</h2>
     <p class="section-desc">Itinerarios de transformación diseñados para cada perfil de cliente.</p>
   </div>
-  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem">
+  <div class="grid-2col-inline" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem">
     <div class="protocolo-card reveal">
       <div class="protocolo-num">01</div>
       <h3 style="font-size:1.6rem">AURA Clarity</h3>
@@ -1292,14 +1309,14 @@ footer ul a:hover{color:#6aaa8e}
 <!-- ══════════════════════════════════════════
      AURA GROWTH
      ══════════════════════════════════════════ -->
-<section id="aura-growth" style="background:var(--bg-up);padding:9rem 3.2rem">
+<section class="section-inline-padding" id="aura-growth" style="background:var(--bg-up);padding:9rem 3.2rem">
   <div style="max-width:960px;margin:0 auto" class="reveal">
     <p class="section-label">AURA Growth</p>
     <h2 class="section-title">¿Tu empresa necesita crecer?<br><em style="font-style:italic;color:var(--accent)">Eso es exactamente lo que hacemos.</em></h2>
     <p class="section-desc" style="margin-bottom:3rem">Marketing de eventos corporativos, estrategia de crecimiento y posicionamiento de marca para empresas que quieren convertirse en referencia de su sector. Servicio boutique exclusivo — máximo 3 clientes simultáneos.</p>
 
     <div style="background:var(--surface);padding:3.5rem;border-left:3px solid var(--accent);box-shadow:0 4px 28px rgba(61,107,92,.08);margin-bottom:2rem">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+      <div class="grid-2col-inline" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
         <div>
           <h3 style="font-family:var(--font-d);font-size:1.6rem;font-weight:300;margin-bottom:1.2rem;color:var(--text)">Crecimiento estratégico<br>con dedicación total</h3>
           <p style="color:var(--text-dim);font-size:.95rem;line-height:1.85;margin-bottom:1.5rem">No somos una agencia tradicional. Pensamos como consultores de negocio y ejecutamos con precisión. Cada euro invertido debe generar retorno medible.</p>
@@ -1321,13 +1338,13 @@ footer ul a:hover{color:#6aaa8e}
 <!-- ══════════════════════════════════════════
      AURA COMMERCE — OPTIMIZACION GESTION Y POSICIONAMIENTO EN GOOGLE
      ══════════════════════════════════════════ -->
-<section id="aura-commerce" style="background:var(--bg-up);padding:9rem 3.2rem">
+<section class="section-inline-padding" id="aura-commerce" style="background:var(--bg-up);padding:9rem 3.2rem">
   <div style="max-width:960px;margin:0 auto" class="reveal">
     <p class="section-label">AURA Commerce</p>
     <h2 class="section-title">Optimización y gestión<br><em style="font-style:italic;color:var(--accent)">de perfiles en Google</em></h2>
     <p class="section-desc" style="margin-bottom:3rem">Antes de que lleguen a ti, ya te han buscado. El 90% de tus clientes potenciales leen tus reseñas antes de contactarte lo que encuentran en Google decide si avanzan o desaparecen. Una estrategia profesional de gestión de reseñas puede transformar tu visibilidad y credibilidad online.</p>
     <div style="background:var(--surface);padding:3.5rem;border-left:3px solid var(--accent);box-shadow:0 4px 28px rgba(61,107,92,.08);margin-bottom:3rem">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+      <div class="grid-2col-inline" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
         <div>
           <h3 style="font-family:var(--font-d);font-size:1.6rem;font-weight:300;margin-bottom:1.2rem;color:var(--text)">Gestión Profesional<br>de Reseñas en Google</h3>
           <p style="color:var(--text-dim);font-size:.95rem;line-height:1.85;margin-bottom:1.5rem">Aprende a responder, solicitar y gestionar estratégicamente tus reseñas de Google. Desde protocolo de respuesta hasta captación de opiniones positivas de clientes reales.</p>
@@ -1355,13 +1372,13 @@ footer ul a:hover{color:#6aaa8e}
   <!-- ══════════════════════════════════════════
      AURA LEGAL — REPUTACIÓN EN PROCESOS LEGALES
      ══════════════════════════════════════════ -->
-<section id="aura-legal" style="background:var(--bg);padding:9rem 3.2rem">
+<section class="section-inline-padding" id="aura-legal" style="background:var(--bg);padding:9rem 3.2rem">
   <div style="max-width:960px;margin:0 auto" class="reveal">
     <p class="section-label">AURA Legal</p>
     <h2 class="section-title">Tu abogado gana el juicio.<br><em style="font-style:italic;color:var(--accent)">Nosotros protegemos tu reputación.</em></h2>
     <p class="section-desc" style="margin-bottom:3rem">Cuando un proceso legal se hace visible, el daño reputacional no espera a la sentencia. Gestionamos tu narrativa en Google, redes sociales, medios y entorno directo — para que ganar el caso sea suficiente para recuperarlo todo.</p>
     <div style="background:var(--surface);padding:3.5rem;border-left:3px solid var(--accent);box-shadow:0 4px 28px rgba(61,107,92,.08);margin-bottom:3rem">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+      <div class="grid-2col-inline" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
         <div>
           <h3 style="font-family:var(--font-d);font-size:1.6rem;font-weight:300;margin-bottom:1.2rem;color:var(--text)">Protección Reputacional<br>para Cualquier Proceso Legal</h3>
           <p style="color:var(--text-dim);font-size:.95rem;line-height:1.85;margin-bottom:1.5rem">Para autónomos, familias, pymes, directivos y empresas. Sea cual sea el área legal — penal, mercantil, civil, laboral o administrativo — si hay exposición pública, hay riesgo reputacional que gestionar.</p>
@@ -1403,7 +1420,7 @@ footer ul a:hover{color:#6aaa8e}
 <!-- ══════════════════════════════════════════
      FAQs ESTRATÉGICAS (Acordeón de 2 niveles)
      ══════════════════════════════════════════ -->
-<section id="faqs" style="background:var(--bg);padding:8rem 3.2rem">
+<section class="section-inline-padding" id="faqs" style="background:var(--bg);padding:8rem 3.2rem">
   <div style="max-width:920px;margin:0 auto" class="reveal">
     <p class="section-label">Preguntas Frecuentes</p>
     <h2 class="section-title">Respondemos<br>tus dudas</h2>
