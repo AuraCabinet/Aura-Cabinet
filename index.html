@@ -2014,29 +2014,17 @@ if(lopdToggle && lopdContent) {
 const musicBtn = document.getElementById('musicBtn');
 let isPlaying = false;
 let audioElement;
+let lastTouch = 0;
 
-['click','touchend'].forEach(evt => musicBtn.addEventListener(evt, (e) => {
-  if(evt==='touchend') e.preventDefault();
+function toggleMusic() {
   if (!isPlaying) {
-    // Crear elemento de audio con piano clásico real
     audioElement = new Audio();
-    
-    // URLs de piano clásico (probamos múltiples fuentes)
-    const audioSources = [
-      'nesrality-vivaldi-four-seasons-summer-4th-movement-classical-remix-7830.mp3'
-    ];
-    
-    audioElement.src = audioSources[0];
+    audioElement.src = 'nesrality-vivaldi-four-seasons-summer-4th-movement-classical-remix-7830.mp3';
     audioElement.loop = true;
-    audioElement.volume = 0.3; // Volumen ambiente discreto
-    
-    // Intentar reproducir
+    audioElement.volume = 0;
     const playPromise = audioElement.play();
-    
     if (playPromise !== undefined) {
       playPromise.then(() => {
-        // Reproducción exitosa - fade in
-        audioElement.volume = 0;
         let vol = 0;
         const fadeIn = setInterval(() => {
           if (vol < 0.3 && isPlaying) {
@@ -2047,19 +2035,14 @@ let audioElement;
           }
         }, 100);
       }).catch(err => {
-        console.log('Autoplay bloqueado. Click requerido:', err);
-        // En caso de bloqueo, el audio se activará en el segundo click del usuario
         audioElement.volume = 0.3;
       });
     }
-    
     isPlaying = true;
     musicBtn.style.opacity = '1';
     musicBtn.title = 'Desactivar música ambiente';
-    
   } else {
-    // Detener con fade out
-    if(audioElement) {
+    if (audioElement) {
       let vol = audioElement.volume;
       const fadeOut = setInterval(() => {
         if (vol > 0.02) {
@@ -2073,10 +2056,23 @@ let audioElement;
         }
       }, 50);
     }
-    
     isPlaying = false;
     musicBtn.style.opacity = '0.6';
     musicBtn.title = 'Activar música ambiente';
+  }
+}
+
+musicBtn.addEventListener('touchend', (e) => {
+  e.preventDefault();
+  lastTouch = Date.now();
+  toggleMusic();
+});
+
+musicBtn.addEventListener('click', () => {
+  if (Date.now() - lastTouch > 500) {
+    toggleMusic();
+  }
+});
   }
 }));
 // ── FAQ ACCORDION (2 niveles) ──
