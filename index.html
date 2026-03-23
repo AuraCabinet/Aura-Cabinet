@@ -789,12 +789,16 @@ section{padding:8rem 3.2rem}
   border:1px solid rgba(61,107,92,0.25);
   color:#fff;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
-  transition:all 0.3s;z-index:99;
+  transition:all 0.3s;z-index:1001;
   box-shadow:0 4px 12px rgba(61,107,92,0.2);
   opacity:0.6;
+  opacity:0.6;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
-.music-btn:hover{background:rgba(77,130,112,0.92);transform:scale(1.05)}
-.music-btn svg{width:20px;height:20px}
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
 
 /* ═══════════════════════════════════════════
    FOOTER
@@ -2008,7 +2012,8 @@ const musicBtn = document.getElementById('musicBtn');
 let isPlaying = false;
 let audioElement;
 
-musicBtn.addEventListener('click', () => {
+['click','touchend'].forEach(evt => musicBtn.addEventListener(evt, (e) => {
+  if(evt==='touchend') e.preventDefault();
   if (!isPlaying) {
     // Crear elemento de audio con piano clásico real
     audioElement = new Audio();
@@ -2070,8 +2075,8 @@ musicBtn.addEventListener('click', () => {
     musicBtn.style.opacity = '0.6';
     musicBtn.title = 'Activar música ambiente';
   }
-});
-
+}
+}));
 // ── FAQ ACCORDION (2 niveles) ──
 
 // Nivel 1: Botón principal para mostrar/ocultar todas las FAQs
