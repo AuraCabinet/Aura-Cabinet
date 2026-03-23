@@ -2014,9 +2014,9 @@ if(lopdToggle && lopdContent) {
 const musicBtn = document.getElementById('musicBtn');
 let isPlaying = false;
 let audioElement;
-let lastTouch = 0;
 
-function toggleMusic() {
+musicBtn.addEventListener('pointerup', (e) => {
+  e.preventDefault();
   if (!isPlaying) {
     audioElement = new Audio();
     audioElement.src = 'nesrality-vivaldi-four-seasons-summer-4th-movement-classical-remix-7830.mp3';
@@ -2034,7 +2034,7 @@ function toggleMusic() {
             clearInterval(fadeIn);
           }
         }, 100);
-      }).catch(err => {
+      }).catch(() => {
         audioElement.volume = 0.3;
       });
     }
@@ -2060,19 +2060,6 @@ function toggleMusic() {
     musicBtn.style.opacity = '0.6';
     musicBtn.title = 'Activar música ambiente';
   }
-}
-
-musicBtn.addEventListener('touchend', (e) => {
-  e.preventDefault();
-  lastTouch = Date.now();
-  toggleMusic();
-});
-
-musicBtn.addEventListener('click', () => {
-  if (Date.now() - lastTouch > 500) {
-    toggleMusic();
-  }
-});
 // ── FAQ ACCORDION (2 niveles) ──
 
 // Nivel 1: Botón principal para mostrar/ocultar todas las FAQs
